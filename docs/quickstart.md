@@ -96,85 +96,86 @@ sample:by-page  rdf:type  tree:Node .
 1.  Create your own `sample.ttl` file with the following content, or you could use the current good-to-go [GetStarted_VSDS Github project](https://github.com/xdxxxdx/GetStarted_VSDS):
 
 ```
-version: '3.3'<br>
-services:<br>
-  ldes-server:<br>
- container_name: quick-start_ldes-server<br>\ image: ghcr.io/informatievlaanderen/ldes-server:latest<br>\
-    environment:<br>
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ns0: <http://def.isotc211.org/iso19156/2011/SamplingFeature#SF_SamplingFeatureCollection.> .
+@prefix ns1: <http://def.isotc211.org/iso19156/2011/Observation#OM_Observation.> .
+@prefix ns2: <http://def.isotc211.org/iso19103/2005/UnitsOfMeasure#Measure.> .
+@prefix ns3: <https://schema.org/> .
 
- - SIS_DATA=/tmp<br>\
-      - <br>SPRING_DATA_MONGODB_DATABASE=sample<br>\ - LDES_COLLECTIONNAME=sample<br>\
-      - <br>LDES_MEMBERTYPE=https://www.w3.org/TR/vocab-ssn-ext/<br>#sosa:ObservationCollection<br>\ - <br>SPRING_DATA_MONGODB_HOST=ldes-mongodb<br>\
-      - SPRING_DATA_MONGODB_PORT=27017<br>\
-      - <br>LDES_HOSTNAME=http://localhost:8080<br>\
-      - LDES_SHAPE=<br>\
-      - <br>VIEW_TIMESTAMPPATH=http://www.w3.org/ns/prov#generatedAtTime<br>\
-      - <br>VIEW_VERSIONOFPATH=http://purl.org/dc/terms/isVersionOf<br>\
-      - VIEWS_0_FRAGMENTATIONS_0<br>_NAME=pagination<br>\
-      - VIEWS_0_NAME=by-page<br>\
-      - VIEWS_0_FRAGMENTATIONS_0<br>_CONFIG_MEMBERLIMIT=1<br>\
-    ports:<br>\
-      - 8080:8080<br>
+<urn:ngsi-ld:WaterQualityObserved:woq:1/2023-03-12T18:31:17.003Z>
+  dc:isVersionOf <urn:ngsi-ld:WaterQualityObserved:woq:1> ;
+  prov:generatedAtTime "2023-03-12T18:31:17.003Z"^^xsd:dateTime ;
+  sosa:hasFeatureOfInterest "spt-00035-79" ;
+  ns0:member <https://data.vmm.be/id/loc-00019-33>, [
+    sosa:madeBySensor <urn:ngsi-v2:cot-imec-be:Device:imec-iow-UR5gEycRuaafxnhvjd9jnU> ;
+    ns1:result [ ns2:value [
+        ns3:value 2.043000e+1 ;
+        ns3:unitCode <https://data.vmm.be/id/CEL>
+      ] ] ;
+    ns1:phenomenonTime "2023-03-12T18:31:17.003Z"^^xsd:datetime ;
+    ns1:observedProperty <https://data.vmm.be/concept/waterkwaliteitparameter/temperatuur> ;
+    ns1:featureOfInterest <https://data.vmm.be/id/spt-00035-79> ;
+    a <http://def.isotc211.org/iso19156/2011/Measurement#OM_Measurement>
+  ], [
+    sosa:madeBySensor <urn:ngsi-v2:cot-imec-be:Device:imec-iow-UR5gEycRuaafxnhvjd9jnU> ;
+    ns1:result [ ns2:value [
+        ns3:value 1442 ;
+        ns3:unitCode <https://data.vmm.be/id/HP>
+      ] ] ;
+    ns1:phenomenonTime "2023-03-12T18:31:17.003Z"^^xsd:datetime ;
+    ns1:observedProperty <https://data.vmm.be/concept/observatieparameter/hydrostatische-druk> ;
+    ns1:featureOfInterest <https://data.vmm.be/id/spt-00035-79> ;
+    a <http://def.isotc211.org/iso19156/2011/Measurement#OM_Measurement>
+  ], [
+    sosa:madeBySensor <urn:ngsi-v2:cot-imec-be:Device:imec-iow-UR5gEycRuaafxnhvjd9jnU> ;
+    ns1:result [ ns2:value [
+        ns3:value 6150 ;
+        ns3:unitCode <https://data.vmm.be/id/G42>
+      ] ] ;
+    ns1:phenomenonTime "2023-03-12T18:31:17.003Z"^^xsd:datetime ;
+    ns1:observedProperty <https://data.vmm.be/concept/waterkwaliteitparameter/conductiviteit> ;
+    ns1:featureOfInterest <https://data.vmm.be/id/spt-00035-79> ;
+    a <http://def.isotc211.org/iso19156/2011/Measurement#OM_Measurement>
+  ] ;
+  a <https://www.w3.org/TR/vocab-ssn-ext/#sosa:ObservationCollection> .
 
-    networks:<br>\
-      - ldes<br>\
-    depends_on:<br>\
-      - ldes-mongodb<br>\
-  ldes-mongodb:<br>\
-    container_name: quick-start_ldes-mongodb<br>\
-    image: mongo:6.0.4<br>
-
-    ports:<br>\
-      - 27017:27017<br>
-
-    networks:<br>\
-      - ldes<br>
-
-  ldes-cli:<br>\
-    image: <br>ghcr.io/informatievlaanderen/ldes-cli:20230222T0959<br>\
-    container_name: quick-start_ldes-client-cli<br>\
-    command: "--url <br>http://localhost:8080/sample/by-page --input-format text/turtle"<br>\
-    profiles:<br>\
-      - delayed-started<br>\
-    network_mode: service:ldes-server
-
-networks:<br>\
-  ldes:<br>\
-    name: quick_start_network<br>
-
+<https://data.vmm.be/id/loc-00019-33> a <http://def.isotc211.org/iso19156/2011/SpatialSamplingFeature#SF_SpatialSamplingFeature> 
 ```
 
 2. Please run\
-   curl -X POST http://localhost:8080/sample -H "Content-Type: application/ttl" -d '@sample.ttl to post the sample.ttlto the [LDES Server](https://github.com/Informatievlaanderen/VSDS-LDESServer4J)
+   ```curl -X POST http://localhost:8080/sample -H "Content-Type: application/ttl" -d '@sample.ttl ``` to post the `sample.ttl` to the [LDES Server](https://github.com/Informatievlaanderen/VSDS-LDESServer4J)
 
 3. **Now!** [LDES Server](https://github.com/Informatievlaanderen/VSDS-LDESServer4J) has [Pagination fragmentation](https://github.com/Informatievlaanderen/VSDS-LDESServer4J/tree/main/ldes-fragmentisers/ldes-fragmentisers-pagination) -ed your first [LDES](https://semiceu.github.io/LinkedDataEventStreams/) data [sample.ttl](https://github.com/xdxxxdx/GetStarted_VSDS/blob/main/sample.ttl). Please use your preferred browser to reach <http://localhost:8080/sample> to have a look.
 
 _The result should be as follow:_
 
 ```
+@prefix ldes:   <https://w3id.org/ldes#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sample: <http://localhost:8080/sample/> .
+@prefix tree:   <https://w3id.org/tree#> .
 
-@prefix ldes:   <[https://w3id.org/ldes#](https://w3id.org/ldes)> .<br>\
-@prefix rdf:    <br><[http://www.w3.org/1999/02/22-rdf-syntax-ns#](http://www.w3.org/1999/02/22-rdf-syntax-ns)> .<br>\
-@prefix sample: <br><http://localhost:8080/sample/> .<br>\
-@prefix tree:   <https://w3id.org/tree#> .<br>
+<http://localhost:8080/sample>
+        rdf:type   ldes:EventStream ;
+        tree:view  sample:by-page .
 
-<http://localhost:8080/sample><br>
-
-        rdf:type   ldes:EventStream ;<br>\
-        tree:view  sample:by-page .<br>
-
-sample:by-page  rdf:type  tree:Node .<br>
-
-```
+sample:by-page  rdf:type  tree:Node ;
+        tree:relation  [ rdf:type   tree:Relation ;
+                         tree:node  <http://localhost:8080/sample/by-page?pageNumber=1>
+                       ] .
+ ```      
 
 Follow the `tree:node` <http://localhost:8080/sample/by-page?pageNumber=1>, you could reach the first page of your data set.
 
 
 ### Synchronise your LDES dataset using [LDES Client](https://github.com/orgs/Informatievlaanderen/packages/container/package/ldes-cli)
 
-- Please run docker compose up ldes-cli -d to start [LDES Client](https://github.com/orgs/Informatievlaanderen/packages/container/package/ldes-cli) docker container.
+- Please run `docker compose up ldes-cli -d` to start [LDES Client](https://github.com/orgs/Informatievlaanderen/packages/container/package/ldes-cli) docker container.
 
-- The posted LDES stream: <http://localhost:8080/sample/by-time>will be followed and LDES members will be outputted to the console (only once) of the ldes-cli docker container. As follow:
+- The posted LDES stream: <http://localhost:8080/sample/by-time> will be followed and LDES members will be outputted to the console (only once) of the ldes-cli docker container. As follow:
 
 
 ```
@@ -225,7 +226,7 @@ Follow the `tree:node` <http://localhost:8080/sample/by-page?pageNumber=1>, yo
 
 Within the working directory, please run
 
- docker compose down -v
+`docker compose down -v`
 
 
 
