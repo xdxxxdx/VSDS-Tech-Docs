@@ -11,9 +11,7 @@ The Linked Data Event Stream (LDES) [server](https://github.com/Informatievlaand
 
 The server can tailor its functionality to meet the organisation's specific needs. Functionalities include **retention policy**, **fragmentation** and **pagination**  for managing and processing large amounts of data more efficiently and ensuring the efficient use of storage. 
 
-![](file:///C:/Users/samue/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg)
-
-
+![](../images/scalableApplications.png)
 
 ## Ingesting sources (HTTP in)
 

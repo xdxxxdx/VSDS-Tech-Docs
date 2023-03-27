@@ -55,8 +55,6 @@ One example of this integration is demonstrated in the diagram below, which illu
 
 In this case, the OCB is integrated into the LDES ecosystem to publish context updates to an LDES stream. The VSDS NIFI solution is used to translate the context data into LDES events and publish them to the LDES stream via an update attributes processor, an OSLO converter processor, and an LdesConverter process NIFI pipeline.
 
-![](file:///C:/Users/samue/AppData/Local/Temp/msohtmlclip1/01/clip_image002.png)
-
 Once the context updates are published to the LDES Sever in LDES formatted stream, they can be processed and stored in the LDES Server as linked data. This makes the context information available for further analysis and uses in other systems. An example NIFI setup with Fiware-Orien Context Broker can be as follow, which locates at [workflow.json](https://github.com/Informatievlaanderen/VSDS-LDES-E2E-testing/blob/main/use-cases/iow/workflow.json).
 
 Please follow [README.md](https://github.com/Informatievlaanderen/VSDS-LDES-E2E-testing/blob/main/use-cases/iow/README.md) for step-by-step guide.
