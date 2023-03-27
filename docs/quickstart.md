@@ -27,7 +27,7 @@ In this short example below, we show you how an LDES server publishes your first
 
 1.  Create a local [docker-compose.yml](https://stackedit.io/docker-compose.yml) file with the following content or you could use the current good-to-go [GetStarted_VSDS Github project](https://github.com/xdxxxdx/GetStarted_VSDS):
 
-```
+```turtle
 version: ‘3.3’
 services:
   ldes-server:
