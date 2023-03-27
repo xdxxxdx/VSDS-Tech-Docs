@@ -70,7 +70,7 @@ It is important to note that once a client processes a member of the LDES, it sh
 
 The base URI for LDES is https://w3id.org/ldes#, with the preferred prefix being ldes:.
 
-```
+```turtle
 @prefix example: <http://www.example.org/>.
 @prefix ldes: <http://w3id.org/ldes#>.
 @prefix tree: <https://w3id.org/tree#>.
@@ -99,7 +99,7 @@ The ldes:EventStream instance MAY have these properties: **ldes:timestampPath** 
 <p align="center"><img src="/VSDS-Tech-Docs/images/versioning.png" width="60%" text-align="center"></p>
 
 
-```
+```turtle
 @prefix example: <http://www.example.org/>.
 @prefix ldes: <http://w3id.org/ldes#>.
 @prefix tree: <https://w3id.org/tree#>.
@@ -130,7 +130,7 @@ It was necessary to create version IRIs to establish links with immutable object
 
 An LDES focuses on allowing clients to replicate a dataset's history and efficiently synchronise with its latest changes. Linked Data Event Streams may be fragmented when their size becomes too big for one HTTP response.
 
-```
+```turtle
 @prefix example: <http://www.example.org/>.
 @prefix ldes: <http://w3id.org/ldes#>.
 @prefix tree: <https://w3id.org/tree#>.
@@ -158,7 +158,7 @@ Here you can find more information about [fragmentation](https://informatievlaan
 
 A retention policy is a set of rules determining how long data should be kept or deleted. A retention policy can be applied to Linked Data Event Streams (LDES) to manage the storage and availability of data objects over time.
 
-```
+```turtle
 @prefix example: <http://www.example.org/>.
 @prefix ldes: <http://w3id.org/ldes#>.
 @prefix tree: <https://w3id.org/tree#>.
