@@ -150,7 +150,7 @@ example:C1 a ldes:EventStream ;
           ] .
 ```
 
-Here you can find more information about [fragmentation](https://informatievlaanderen.github.io/VSDS-Tech-Docs/docs/Specification.html#fragmentation-and-pagination).
+Here you can find more information about [fragmentation](https://informatievlaanderen.github.io/VSDS-Tech-Docs/docs/LDES_server.html#fragmentation).
 
 ## Retention policy
 
@@ -172,7 +172,7 @@ example:P1 a ldes:DurationAgoPolicy ;
       tree:value "P1Y"^^xsd:duration . # Keep 1 year of data
 ```
 
-Here you can find more information about [retention policy](https://informatievlaanderen.github.io/VSDS-Tech-Docs/docs/Specification.html#retention-policy).
+Here you can find more information about [retention policy](https://informatievlaanderen.github.io/VSDS-Tech-Docs/docs/LDES_server.html#retention-policy).
 
 ## SHACL
 
