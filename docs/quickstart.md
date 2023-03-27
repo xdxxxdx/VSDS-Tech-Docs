@@ -411,7 +411,7 @@ construct {
 This SPARQL query returns multiple triples with information about building units. These triples can then be converted into an RDF file.
 
 The RDF file should be as follow:
-```
+```turtle
 @prefix ns1: <https://data.vlaanderen.be/ns/generiek#> .
 @prefix ns2: <https://data.vlaanderen.be/ns/gebouw#> .
 @prefix ns3: <http://www.w3.org/ns/prov#> .
