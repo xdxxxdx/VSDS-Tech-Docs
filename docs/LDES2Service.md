@@ -46,7 +46,7 @@ In this [Github repo](https://github.com/samuvack/LDES2TimescaleDB), you will fi
 
 3. Create a local docker-compose.yml file with [the following good-to-go configuration](https://github.com/samuvack/LDES2TimescaleDB/blob/main/docker-compose.yml)
 
-4. Run  docker-compose up --build
+4. Run  ```docker-compose up --build```
 
 5. import a data flow in Apache NiFi (localhost:8443) via [this configuration file](https://github.com/samuvack/LDES2TimescaleDB/blob/main/iow_LDES_timescale.json)
 
@@ -83,7 +83,7 @@ A data flow is configured in Apache NiFi to convert these data streams into Post
 
 3. Create a local docker-compose.yml file with [the following good-to-go configuration](https://github.com/Informatievlaanderen/VSDS-LDESDemo/blob/master/geoserver/docker-compose.yml)
 
-4. Run  docker-compose up --build
+4. Run  ```docker-compose up --build```
 
 5. import a data flow in Apache NiFi (localhost:8443) via this configuration file[[SV1]](https://vlaamseoverheid.sharepoint.com/sites/Digitaal-Vlaanderen-VSDS/Gedeelde%20documenten/General/VSDS%20portaal/Tech%20docs.docx#_msocom_1) 
 
@@ -120,7 +120,7 @@ A data flow is configured in Apache NiFi to convert these data streams into Post
 
 3. Create a local docker-compose.yml file with [the following good-to-go configuration](https://github.com/Informatievlaanderen/VSDS-LDESDemo/blob/master/geoserver/docker-compose.yml)
 
-4. Run  docker-compose up --build
+4. Run  ```docker-compose up --build```
 
 5. import a data flow in Apache NiFi (localhost:8443) via this configuration file
 6. Assign and LDES endpoint in the LDES client
@@ -175,7 +175,7 @@ A data flow is configured in Apache NiFi to convert these data streams into Post
 
 4. Create a local docker-compose.yml file with [the following good-to-go configuration](https://github.com/samuvack/ML-LDES-server/blob/master/docker-compose.yml)
 
-5. Run  docker-compose up --build
+5. Run  ```docker-compose up --build```
 
 6. import a data flow in Apache NiFi (localhost:8443) via this configuration file
 
