@@ -4,7 +4,6 @@ sort: 9
 
 # LDES CLIENT
 
-
 <p align="center"><img src="/VSDS-Tech-Docs/images/LDES%20client.png" width="60%" text-align="center"></p>
 
 The [LDES CLIENT](https://github.com/Informatievlaanderen/VSDS-Linked-Data-Interactions) is designed for both replication and synchronisation, meaning that the client can retrieve members of an LDES but also checks regularly if new members are added, and fetches them, allowing data consumers to stay up to date with the dataset.
@@ -14,7 +13,6 @@ To understand how an LDES client functions, it is important to understand how LD
 This information is important for the LDES client, because it only must fetch an immutable fragment once, while mutable (thus, still changing) fragments must be regularly polled to check for new members.
 
 ## Replication
-
 
 In order to start the replication of an LDES, data consumers must configure the LDES client with an LDES *view* endpoint. If the data consumer configures the LDES endpoint, which possibly describes multiple views, the LDES client will use the first view it receives to start the replication.
 
