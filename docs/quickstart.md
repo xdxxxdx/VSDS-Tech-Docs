@@ -27,7 +27,7 @@ In this short example below, we show you how an LDES server publishes your first
 
 1.  Create a local [docker-compose.yml](https://stackedit.io/docker-compose.yml) file with the following content or you could use the current good-to-go [GetStarted_VSDS Github project](https://github.com/xdxxxdx/GetStarted_VSDS):
 
-```turtle
+```yaml
 version: ‘3.3’
 services:
   ldes-server:
@@ -80,7 +80,7 @@ networks:
 
 _The result should be as follow:_
 
-```
+```turtle
 @prefix ldes:   <https://w3id.org/ldes#> .
 @prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sample: <http://localhost:8080/sample/> .
@@ -95,7 +95,7 @@ sample:by-page  rdf:type  tree:Node .
 
 1.  Create your own `sample.ttl` file with the following content, or you could use the current good-to-go [GetStarted_VSDS Github project](https://github.com/xdxxxdx/GetStarted_VSDS):
 
-```
+```turtle
 @prefix dc: <http://purl.org/dc/terms/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -151,7 +151,7 @@ sample:by-page  rdf:type  tree:Node .
 
 _The result should be as follow:_
 
-```
+```turtle
 @prefix ldes:   <https://w3id.org/ldes#> .
 @prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sample: <http://localhost:8080/sample/> .
@@ -250,7 +250,7 @@ In this short example below, we show you how the components of the VSDS can be u
 
 1.  Create a local [docker-compose.yml](https://github.com/samuvack/ldes-grar/blob/main/docker-compose.yml) file with the following content, or you could use the current good-to-go [GetStarted GRAR project](https://github.com/samuvack/ldes-grar):
 
-```
+```yaml
 version: ‘3’
 volumes:
   nifi-database-repository:
@@ -326,7 +326,7 @@ Because we are dealing with 'state' objects, we need to convert these objects in
 
 Now that the Kafka topics are converted into a version object, the LDES server can publish these members into LDES members.
 
-```
+```turtle
 @prefix conceptscheme: <https://data.vlaanderen.be/id/conceptscheme/> .
 @prefix generiek:      <https://data.vlaanderen.be/ns/generiek#> .
 @prefix geosparql:     <http://www.opengis.net/ont/geosparql#> .
@@ -380,7 +380,7 @@ For this purpose, the three Linked Data Event streams are stored in a [GraphDB]
 
 Below you find an example of a SPARQL query. This query returns triples with information about the parcel LDES.
 
-```
+```turtle
 PREFIX adres: https://data.vlaanderen.be/id/adres/
 PREFIX gebouw: https://data.vlaanderen.be/id/?gebouweenheid/
 PREFIX gebouweenheid: https://data.vlaanderen.be/ns/gebouw#
