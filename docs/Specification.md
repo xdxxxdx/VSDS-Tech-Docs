@@ -88,7 +88,7 @@ example:Observation1 a sosa:Observation ;
                 sosa:hasSimpleResult "..." .
 ```
 
-```Note
+```note
 The Observation object is considered to be immutable, and its existing identifiers can be utilized as such.
 ```
 
@@ -116,7 +116,7 @@ example:AddressRecord1-version1 dcterms:created "2021-01-01T00:00:00Z"^^xsd:date
                            dcterms:isVersionOf example:AddressRecord1 ;
                            dcterms:title "Streetname X, ZIP Municipality, Country" .
 ```
-```Note
+```note
 It was necessary to create version IRIs to establish links with immutable objects
 ```
 
