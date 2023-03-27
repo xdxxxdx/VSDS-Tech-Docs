@@ -61,7 +61,7 @@ In a nutshell, there are several reasons why there was a need to add Linked Data
 ## Structure of a Linked Data Event Stream
 
 
-The Linked Data Event Stream (LDES) specification (ldes:EventStream) defines a collection (rdfs:subClassOf tree:Collection) of immutable objects, with each object described using a set of RDF triples ([rdf-primer]).
+The [Linked Data Event Stream (LDES) specification (ldes:EventStream)](https://semiceu.github.io/LinkedDataEventStreams/) defines a collection (rdfs:subClassOf tree:Collection) of immutable objects, with each object described using a set of RDF triples ([rdf-primer]).
 
 To provide collection and fragmentation (or pagination) features, the LDES specification utilizes the TREE specification. The TREE specification is compatible with other specifications such as [activitystreams-core], [VOCAB-DCAT-2], [LDP], or Shape Trees. For specific compatibility rules, please refer to the TREE specification.
 
