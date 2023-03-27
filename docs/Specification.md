@@ -58,7 +58,7 @@ In a nutshell, there are several reasons why there was a need to add Linked Data
 
 - Linked Data Event Streams allow applications to subscribe to event streams and receive updates in real-time, which can be helpful in various applications, such as real-time data analysis, event-driven architecture, and more.
 
-## Example of a Linked Data Event Stream
+## Structure of a Linked Data Event Stream
 
 
 The Linked Data Event Stream (LDES) specification (ldes:EventStream) defines a collection (rdfs:subClassOf tree:Collection) of immutable objects, with each object described using a set of RDF triples ([rdf-primer]).
