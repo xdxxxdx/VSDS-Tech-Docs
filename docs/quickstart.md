@@ -222,12 +222,7 @@ Follow the `tree:node` <http://localhost:8080/sample/by-page?pageNumber=1>, yo
 
 ### Tear down the infrastructure and remove the volumes
 
-
-Within the working directory, please run
-
- docker compose down -v
-
-
+Within the working directory, please run   ```docker compose down -v```
 
 
 ## Example 2
