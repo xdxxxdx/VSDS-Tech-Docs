@@ -477,7 +477,7 @@ The server allows configurable fragment refresh times with the max-age and max-a
   ldes:
     collection-name: { short name of the collection, cannot contain characters that are used for url interpretation, e.g. '$', '=' or '&' }
     host-name: { hostname of LDES Server }
-    member-type: { Defines which syntax type is used to define the member id e.g. "https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder" }
+    member-type: { Defines which syntax type is used to define the member id e.g. "https://data.vlaanderen.be/ns/mobiliteit#Mobiliteitshinder"}
     timestamp-path: { SHACL property path to the timestamp when the version object entered the event stream. }
     version-of: { SHACL property path to the non-versioned identifier of the entity. }
     validation:
