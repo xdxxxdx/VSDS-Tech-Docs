@@ -128,11 +128,49 @@ It was necessary to create version IRIs to establish links with immutable object
 
 An LDES focuses on allowing clients to replicate a dataset's history and efficiently synchronise with its latest changes. Linked Data Event Streams may be fragmented when their size becomes too big for one HTTP response.
 
+```
+@prefix example: <http://www.example.org/>.
+@prefix ldes: <http://w3id.org/ldes#>.
+@prefix tree: <https://w3id.org/tree#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+
+example:C1 a ldes:EventStream ;
+      ldes:timestampPath sosa:resultTime ;
+      tree:shape example:shape1.shacl ;
+      tree:member example:Obervation1, ... ;
+      tree:view <?page=1> .
+
+<?page=1> a tree:Node ;
+          tree:relation [
+              a tree:GreaterThanOrEqualToRelation ;
+              tree:path sosa:resultTime ;
+              tree:node <?page=2> ;
+              tree:value "2020-12-24T12:00:00Z"^^xsd:dateTime
+          ] .
+```
+
 Here you can find more information about [fragmentation](https://informatievlaanderen.github.io/VSDS-Tech-Docs/docs/Specification.html#fragmentation-and-pagination).
 
 ## Retention policy
 
 A retention policy is a set of rules determining how long data should be kept or deleted. A retention policy can be applied to Linked Data Event Streams (LDES) to manage the storage and availability of data objects over time.
+
+```
+@prefix example: <http://www.example.org/>.
+@prefix ldes: <http://w3id.org/ldes#>.
+@prefix tree: <https://w3id.org/tree#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+example:C3 a ldes:EventStream ;
+      ldes:timestampPath prov:generatedAtTime ;
+      tree:view <> .
+
+<> ldes:retentionPolicy example:P1 .
+
+example:P1 a ldes:DurationAgoPolicy ;
+      tree:value "P1Y"^^xsd:duration . # Keep 1 year of data
+```
 
 Here you can find more information about [retention policy](https://informatievlaanderen.github.io/VSDS-Tech-Docs/docs/Specification.html#retention-policy).
 
