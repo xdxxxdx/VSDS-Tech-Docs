@@ -65,7 +65,7 @@ The Linked Data Event Stream (LDES) specification (ldes:EventStream) defines a c
 
 To provide collection and fragmentation (or pagination) features, the LDES specification utilizes the TREE specification. The TREE specification is compatible with other specifications such as [activitystreams-core], [VOCAB-DCAT-2], [LDP], or Shape Trees. For specific compatibility rules, please refer to the TREE specification.
 
-```Note
+```note
 It is important to note that once a client processes a member of the LDES, it should never have to process it again. Therefore, a Linked Data Event Stream client can maintain a list of already processed member IRIs in a cache. A reference implementation of a client is available as part of the Comunica framework on NPM and Github.
 ```
 
