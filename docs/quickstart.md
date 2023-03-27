@@ -74,7 +74,7 @@ networks:
 ```
 
 2. Within the working directory of [docker-compose.yml](https://xdxxxdx.github.io/GetStarted_VSDS/docker-compose.yml), please\
-   run docker compose up to start the [LDES Server](https://github.com/Informatievlaanderen/VSDS-LDESServer4J) and [MongoDB](https://www.mongodb.com/) containers.
+   run ```docker compose up``` to start the [LDES Server](https://github.com/Informatievlaanderen/VSDS-LDESServer4J) and [MongoDB](https://www.mongodb.com/) containers.
 
 3. **Now!** [LDES Server](https://github.com/Informatievlaanderen/VSDS-LDESServer4J) is running at port 8080 and ready for making [Pagination fragmentation](https://github.com/Informatievlaanderen/VSDS-LDESServer4J/tree/main/ldes-fragmentisers/ldes-fragmentisers-pagination) for your data. Please. use your preferred browser to reach <http://localhost:8080/sample> to have a look.
 
