@@ -58,39 +58,69 @@ In a nutshell, there are several reasons why there was a need to add Linked Data
 
 - Linked Data Event Streams allow applications to subscribe to event streams and receive updates in real-time, which can be helpful in various applications, such as real-time data analysis, event-driven architecture, and more.
 
-## Example of a Linked data Event Stream
+## Example of a Linked Data Event Stream
 
 
-State object
+The Linked Data Event Stream (LDES) specification (ldes:EventStream) defines a collection (rdfs:subClassOf tree:Collection) of immutable objects, with each object described using a set of RDF triples ([rdf-primer]).
 
-Version
+To provide collection and fragmentation (or pagination) features, the LDES specification utilizes the TREE specification. The TREE specification is compatible with other specifications such as [activitystreams-core], [VOCAB-DCAT-2], [LDP], or Shape Trees. For specific compatibility rules, please refer to the TREE specification.
 
-CONTEXT
-
-LDES
-
-## HTML specification
-
-
+```Note
+It is important to note that once a client processes a member of the LDES, it should never have to process it again. Therefore, a Linked Data Event Stream client can maintain a list of already processed member IRIs in a cache. A reference implementation of a client is available as part of the Comunica framework on NPM and Github.
 ```
 
+The base URI for LDES is https://w3id.org/ldes#, with the preferred prefix being ldes:.
+
+```
 @prefix example: <http://www.example.org/>.
 @prefix ldes: <http://w3id.org/ldes#>.
 @prefix tree: <https://w3id.org/tree#>.
-@prefix dct: <http://purl.org/dc/terms/>.
+@prefix sosa: <http://www.w3.org/ns/sosa/>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 
-example:EventStream a ldes:Evenstream;
- tree:member example:member1, example:member2.
+example:C1 a ldes:EventStream ;
+      ldes:timestampPath sosa:resultTime ;
+      tree:shape example:shape1.shacl ;
+      tree:member example:Observation1 .
 
-example:member1 dct:title “The first member”;
- dct:description “The first member of the Linked Data Event Stream”;
- dct:created "2023-01-02T10:00:00Z"^^xsd:dateTime.
- 
-example:member2 dct:title “The second member”;
- dct:description “The second member of the Linked Data Event Stream”;
- dct:created "2023-01-02T11:00:00Z"^^xsd:dateTime.
+example:Observation1 a sosa:Observation ;
+                sosa:resultTime "2021-01-01T00:00:00Z"^^xsd:dateTime ;
+                sosa:hasSimpleResult "..." .
 ```
+
+```Note
+The Observation object is considered to be immutable, and its existing identifiers can be utilized as such.
+```
+
+The ldes:EventStream instance SHOULD have these properties: **tree:shape** and **tree:member**. The tree:shape defines the shape of the collection and ensures that all members of the stream are validated by this shape. The tree:member property indicates the members of the collection.
+
+The ldes:EventStream instance MAY have these properties: **ldes:timestampPath** and **ldes:versionOfPath**. The ldes:timestampPath specifies how clients can use a timestamp (xsd:dateTime) to determine the order of members in the LDES. The ldes:versionOfPath property indicates the non-version object, which remains constant across all versions, in the case where a collection contains several versions of an object.
+
+
+```
+@prefix example: <http://www.example.org/>.
+@prefix ldes: <http://w3id.org/ldes#>.
+@prefix tree: <https://w3id.org/tree#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms <http://purl.org/dc/terms/>
+@prefix adms <http://www.w3.org/ns/adms#>
+
+example:C2 a ldes:EventStream ;
+      ldes:timestampPath dcterms:created ;
+      ldes:versionOfPath dcterms:isVersionOf ;
+      tree:shape example:shape2.shacl ;
+      tree:member example:AddressRecord1-version1 .
+
+example:AddressRecord1-version1 dcterms:created "2021-01-01T00:00:00Z"^^xsd:dateTime ;
+                           adms:versionNotes "First version of this address" ;
+                           dcterms:isVersionOf example:AddressRecord1 ;
+                           dcterms:title "Streetname X, ZIP Municipality, Country" .
+```
+```Note
+It was necessary to create version IRIs to establish links with immutable objects
+```
+
+
 
 # Features
 
@@ -98,13 +128,13 @@ example:member2 dct:title “The second member”;
 
 An LDES focuses on allowing clients to replicate a dataset's history and efficiently synchronise with its latest changes. Linked Data Event Streams may be fragmented when their size becomes too big for one HTTP response.
 
-
+Here you can find more information about [fragmentation](https://informatievlaanderen.github.io/VSDS-Tech-Docs/docs/Specification.html#fragmentation-and-pagination).
 
 ## Retention policy
 
 A retention policy is a set of rules determining how long data should be kept or deleted. A retention policy can be applied to Linked Data Event Streams (LDES) to manage the storage and availability of data objects over time.
 
-
+Here you can find more information about [retention policy](https://informatievlaanderen.github.io/VSDS-Tech-Docs/docs/Specification.html#retention-policy).
 
 ## SHACL
 

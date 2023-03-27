@@ -27,7 +27,7 @@ When starting up the LDES server, the server checks if a SHACL shape (Shapes Con
 
 The SHACL shape specifies the properties of an RDF resource and the rules that must be followed to ensure the data adheres to the expected structure and semantics. It defines properties such as required properties, allowed property values, and the data types expected for the properties.
 
-For more information about the SHACL shape and its structure, **link:** **go to ****2.3**** SHACL Shape.**
+For more information about the SHACL shape and its structure, go to [here](https://informatievlaanderen.github.io/VSDS-Tech-Docs/docs/Specification.html#shacl).
 
 Example HTTP Ingest-Fetch Configuration:
 
