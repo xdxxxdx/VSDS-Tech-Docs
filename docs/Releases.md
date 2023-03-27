@@ -6,7 +6,7 @@ sort: 7
 
 ## LDES Server
 
-<p align="left"><img src="https://img.shields.io/github/release-date/Informatievlaanderen/VSDS-LDESServer4J?style=social" width="60%" text-align="left"></p>
+<p align="left"><img src="https://img.shields.io/github/release-date/Informatievlaanderen/VSDS-LDESServer4J?style=social" text-align="left"></p>
 
 
 ## LDES Client
@@ -15,4 +15,5 @@ sort: 7
 ## LDES Connectors
 
 ## Linked Data Interactions
-<p align="left"><img src="https://img.shields.io/github/release-date/Informatievlaanderen/VSDS-Linked-Data-Interactions?style=social" width="60%" text-align="left"></p>
+<p align="left"><img src="https://img.shields.io/github/release-date/Informatievlaanderen/VSDS-Linked-Data-Interactions?style=social" text-align="left"></p>
+
