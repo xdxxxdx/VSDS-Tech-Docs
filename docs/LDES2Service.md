@@ -14,7 +14,7 @@ The LDES2Service toolbox contains an "RDF4J Put" Processor , allowing to ingest
 
 1. Install Docker
 
-2. Make sure port 8433 and 7200 is accessible
+2. Make sure port 8433 and 7200 are accessible
 
 3. Create a local docker-compose.yml file with [the following good-to-go configuration](https://github.com/samuvack/ldes-grar/blob/main/NiFi_Flow.json)
 
@@ -42,7 +42,7 @@ In this [Github repo](https://github.com/samuvack/LDES2TimescaleDB), you will fi
 
 1. Install [Docker](https://www.docker.com/)
 
-2. Make sure port 8433, 8001 and 8002 is accessible
+2. Make sure port 8433, 8001 and 8002 are accessible
 
 3. Create a local docker-compose.yml file with [the following good-to-go configuration](https://github.com/samuvack/LDES2TimescaleDB/blob/main/docker-compose.yml)
 
@@ -79,7 +79,7 @@ A data flow is configured in Apache NiFi to convert these data streams into Post
 
 1. Install [Docker](https://www.docker.com/)
 
-2. Make sure port 8433, 8001 and 8002 is accessible
+2. Make sure port 8433, 8001 and 8002 are accessible
 
 3. Create a local docker-compose.yml file with [the following good-to-go configuration](https://github.com/Informatievlaanderen/VSDS-LDESDemo/blob/master/geoserver/docker-compose.yml)
 
@@ -116,7 +116,7 @@ A data flow is configured in Apache NiFi to convert these data streams into Post
 
 1. Install [Docker](https://www.docker.com/)
 
-2. Make sure port 8433, 8001 and 8002 is accessible
+2. Make sure port 8433, 8001 and 8002 are accessible
 
 3. Create a local docker-compose.yml file with [the following good-to-go configuration](https://github.com/Informatievlaanderen/VSDS-LDESDemo/blob/master/geoserver/docker-compose.yml)
 
@@ -171,7 +171,7 @@ A data flow is configured in Apache NiFi to convert these data streams into Post
 
 2. Install [Docker](https://www.docker.com/)
 
-3. Make sure port 8433, 8001 and 5432 is accessible
+3. Make sure port 8433, 8001 and 5432 are accessible
 
 4. Create a local docker-compose.yml file with [the following good-to-go configuration](https://github.com/samuvack/ML-LDES-server/blob/master/docker-compose.yml)
 
