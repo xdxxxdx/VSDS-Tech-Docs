@@ -174,7 +174,7 @@ Follow the `tree:node` <http://localhost:8080/sample/by-page?pageNumber=1>, yo
 
 - Please run docker compose up ldes-cli -d to start [LDES Client](https://github.com/orgs/Informatievlaanderen/packages/container/package/ldes-cli) docker container.
 
-- The posted LDES stream: <http://localhost:8080/sample/by-time>will be followed and LDES members will be outputted to the console (only once) of the ldes-cli docker container. As follow:
+- The posted LDES stream: <http://localhost:8080/sample/by-time> will be followed and LDES members will be outputted to the console (only once) of the ldes-cli docker container. As follow:
 
 
 ```
@@ -253,7 +253,7 @@ In this short example below, we show you how the components of the VSDS can be u
 ### Start your LDES workbench
 
 
-1.  Create a local [docker-compose.yml](https://stackedit.io/docker-compose.yml) file with the following content, or you could use the current good-to-go [GetStarted GRAR project](https://github.com/samuvack/ldes-grar):
+1.  Create a local [docker-compose.yml](https://github.com/samuvack/ldes-grar/blob/main/docker-compose.yml) file with the following content, or you could use the current good-to-go [GetStarted GRAR project](https://github.com/samuvack/ldes-grar):
 
 ```
 version: ‘3’
