@@ -2,4 +2,4 @@
 sort: 6
 ---
 
-# LDES CLIENT
+# LDES CONNECTORS
