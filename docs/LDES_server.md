@@ -54,7 +54,7 @@ To reduce the amount of data consumers need to replicate or to speed up certain 
 
 <p align="center"><img src="/VSDS-Tech-Docs/images/fragmentation.png" width="60%" text-align="center"></p>
 
-The fragmenting of a Linked Data Event Stream (LDES) is a crucial technique for managing and processing large amounts of data more efficiently. There are three main methods of fragmentation: **geospatial**,** time-based**, and **substring** fragmentation.
+The fragmenting of a Linked Data Event Stream (LDES) is a crucial technique for managing and processing large amounts of data more efficiently. There are three main methods of fragmentation: **geospatial**, **time-based**, and **substring** fragmentation.
 
 <br>
 
@@ -64,7 +64,7 @@ The fragmenting of a Linked Data Event Stream (LDES) is a crucial technique for 
 
 ### Partitioning
 
-When applying partitioning, the LDES server will create fragments based on the order of arrival of the LDES member. This fragmentation is considered to be the most basic and default fragmentation.\
+When applying partitioning, the LDES server will create fragments based on the order of arrival of the LDES member. This fragmentation is considered to be the most basic and default fragmentation.
 The members that arrive first on the LDES server are added to the first page, while the latest members are always included on the latest page.
 
 

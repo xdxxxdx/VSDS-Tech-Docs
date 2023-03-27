@@ -21,7 +21,6 @@ The LDES specification is based on a particular specification, called the [TREE 
 
 ![](../images/spec.png)
 
-
 This specification is designed to be compatible with other specifications, such as Activity Streams Core, VOCAB-DCAT-2, LDP, and Shape Trees. This means you can use the LDES spec in combination with these other formats to create a more comprehensive and powerful data structure.
 
 Linked Data Event Streams (LDES) apply --- as the term implies --- the Linked Data principles to data event streams. A data stream is typically a constant flow of distinct data points, each containing information about an event or change of state that originates from a system that continuously creates data. Some examples of data streams include sensor and other IoT data, financial data, etc.
@@ -62,7 +61,8 @@ In a nutshell, there are several reasons why there was a need to add Linked Data
 
 The [Linked Data Event Stream (LDES) specification (ldes:EventStream)](https://semiceu.github.io/LinkedDataEventStreams/) defines a collection (rdfs:subClassOf tree:Collection) of immutable objects, with each object described using a set of RDF triples ([rdf-primer]).
 
-To provide collection and fragmentation (or pagination) features, the LDES specification utilizes the TREE specification. The TREE specification is compatible with other specifications such as [activitystreams-core], [VOCAB-DCAT-2], [LDP], or Shape Trees. For specific compatibility rules, please refer to the TREE specification.
+To provide collection and fragmentation (or pagination) features, the LDES specification utilizes the TREE specification. The TREE specification is compatible with other specifications such as [activitystreams-core](https://www.w3.org/TR/activitystreams-core/), [VOCAB-DCAT-2](https://www.w3.org/TR/vocab-dcat-2), [LDP](https://www.w3.org/TR/ldp/), or Shape Trees. For specific compatibility rules, please refer to the [TREE specification](https://treecg.github.io/specification/).
+
 
 ```note
 It is important to note that once a client processes a member of the LDES, it should never have to process it again. Therefore, a Linked Data Event Stream client can maintain a list of already processed member IRIs in a cache. A reference implementation of a client is available as part of the Comunica framework on NPM and Github.

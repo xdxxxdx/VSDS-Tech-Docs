@@ -238,7 +238,7 @@ Within the working directory, please run `docker compose down -v`
 ```
 
 
-In this short example below, we show you how the components of the VSDS can be used to link multiple data streams across domains and systems using LDES. The whole story can be read here: <https://github.com/samuvack/ldes-grar>
+In this short example below, we show you how the components of the VSDS can be used to link multiple data streams across domains and systems using LDES. The whole story can be read here: [ldes-grar](https://github.com/samuvack/ldes-grar)
 
 ### Before starting
 
