@@ -97,6 +97,9 @@ The ldes:EventStream instance SHOULD have these properties: **tree:shape** and *
 The ldes:EventStream instance MAY have these properties: **ldes:timestampPath** and **ldes:versionOfPath**. The ldes:timestampPath specifies how clients can use a timestamp (xsd:dateTime) to determine the order of members in the LDES. The ldes:versionOfPath property indicates the non-version object, which remains constant across all versions, in the case where a collection contains several versions of an object.
 
 
+<p align="center"><img src="/VSDS-Tech-Docs/images/versioning.png" width="60%" text-align="center"></p>
+
+
 ```
 @prefix example: <http://www.example.org/>.
 @prefix ldes: <http://w3id.org/ldes#>.
