@@ -6,12 +6,12 @@ sort: 7
 
 ```tip
 
-To get informed when a new version of a building block is release, go to 'watch'
-<p align="centre"><img src="/VSDS-Tech-Docs/images/releases.png" text-align="centre"></p>
+To get informed when a new version of a building block is released, go to 'watch'
 
-On the [notifications] page, you can see your personal notification subscribtion (https://github.com/notifications) 
+On the [notifications](https://github.com/notifications) page, you can see your personal notification subscribtion  
 
 ```
+<p align="centre"><img src="/VSDS-Tech-Docs/images/releases.png" text-align="centre"></p>
 
 ## LDES Server
 
