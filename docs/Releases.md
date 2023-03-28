@@ -6,12 +6,17 @@ sort: 7
 
 
 ## LDES Server
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Informatievlaanderen_VSDS-LDESServer4J&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Informatievlaanderen_VSDS-LDESServer4J)
+
 
 <p align="left"><img src="https://img.shields.io/github/release-date/Informatievlaanderen/VSDS-LDESServer4J?style=social" text-align="left"></p>
 
 Go to [this Github repository](https://github.com/Informatievlaanderen/VSDS-LDESServer4J) for all the releases of the LDES server.
 
 ## Linked Data Interactions
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Informatievlaanderen_VSDS-Linked-Data-Interactions&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Informatievlaanderen_VSDS-Linked-Data-Interactions)
+
 <p align="left"><img src="https://img.shields.io/github/release-date/Informatievlaanderen/VSDS-Linked-Data-Interactions?style=social" text-align="left"></p>
 
 Go to [this Github repository](https://github.com/Informatievlaanderen/VSDS-Linked-Data-Interactions) for all the releases of the Linked Data Interactions.
