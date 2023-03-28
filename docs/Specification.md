@@ -17,11 +17,9 @@ These objects are described using a specific format called RDF triples, which st
 More information on Linked Data can be found [here](https://www.w3.org/standards/semanticweb/data).
 ```
 
-The LDES specification is based on a particular specification, called the [TREE specification](https://w3id.org/tree/specification). The TREE specification originates from the idea to provide an alternative to one-dimensional HTTP pagination. It allows to fragment a collection of items and interlink these fragments. Instead of linking to the next or previous page, the relation describes what elements can be found by following the link to another fragment. The LDES specification extends the TREE specification by stating that every item in the collection ***must***be immutable.
+The LDES specification is based on a particular specification, called the [TREE specification](https://w3id.org/tree/specification). The TREE specification originates from the idea to provide an alternative to one-dimensional HTTP pagination. It allows to fragment a collection of items and interlink these fragments. Instead of linking to the next or previous page, the relation describes what elements can be found by following the link to another fragment. The LDES specification extends the TREE specification by stating that every item in the collection ***must*** be immutable.
 
-![](/VSDS-Tech-Docs/images/)
-
-
+![](../images/spec.png)
 
 This specification is designed to be compatible with other specifications, such as Activity Streams Core, VOCAB-DCAT-2, LDP, and Shape Trees. This means you can use the LDES spec in combination with these other formats to create a more comprehensive and powerful data structure.
 
@@ -63,7 +61,8 @@ In a nutshell, there are several reasons why there was a need to add Linked Data
 
 The [Linked Data Event Stream (LDES) specification (ldes:EventStream)](https://semiceu.github.io/LinkedDataEventStreams/) defines a collection (rdfs:subClassOf tree:Collection) of immutable objects, with each object described using a set of RDF triples ([rdf-primer]).
 
-To provide collection and fragmentation (or pagination) features, the LDES specification utilizes the TREE specification. The TREE specification is compatible with other specifications such as [activitystreams-core], [VOCAB-DCAT-2], [LDP], or Shape Trees. For specific compatibility rules, please refer to the TREE specification.
+To provide collection and fragmentation (or pagination) features, the LDES specification utilizes the TREE specification. The TREE specification is compatible with other specifications such as [activitystreams-core](https://www.w3.org/TR/activitystreams-core/), [VOCAB-DCAT-2](https://www.w3.org/TR/vocab-dcat-2), [LDP](https://www.w3.org/TR/ldp/), or Shape Trees. For specific compatibility rules, please refer to the [TREE specification](https://treecg.github.io/specification/).
+
 
 ```note
 It is important to note that once a client processes a member of the LDES, it should never have to process it again. Therefore, a Linked Data Event Stream client can maintain a list of already processed member IRIs in a cache. A reference implementation of a client is available as part of the Comunica framework on NPM and Github.
@@ -71,7 +70,7 @@ It is important to note that once a client processes a member of the LDES, it sh
 
 The base URI for LDES is https://w3id.org/ldes#, with the preferred prefix being ldes:.
 
-```
+```turtle
 @prefix example: <http://www.example.org/>.
 @prefix ldes: <http://w3id.org/ldes#>.
 @prefix tree: <https://w3id.org/tree#>.
@@ -100,7 +99,7 @@ The ldes:EventStream instance MAY have these properties: **ldes:timestampPath** 
 <p align="center"><img src="/VSDS-Tech-Docs/images/versioning.png" width="60%" text-align="center"></p>
 
 
-```
+```turtle
 @prefix example: <http://www.example.org/>.
 @prefix ldes: <http://w3id.org/ldes#>.
 @prefix tree: <https://w3id.org/tree#>.
@@ -131,7 +130,7 @@ It was necessary to create version IRIs to establish links with immutable object
 
 An LDES focuses on allowing clients to replicate a dataset's history and efficiently synchronise with its latest changes. Linked Data Event Streams may be fragmented when their size becomes too big for one HTTP response.
 
-```
+```turtle
 @prefix example: <http://www.example.org/>.
 @prefix ldes: <http://w3id.org/ldes#>.
 @prefix tree: <https://w3id.org/tree#>.
@@ -159,7 +158,7 @@ Here you can find more information about [fragmentation](https://informatievlaan
 
 A retention policy is a set of rules determining how long data should be kept or deleted. A retention policy can be applied to Linked Data Event Streams (LDES) to manage the storage and availability of data objects over time.
 
-```
+```turtle
 @prefix example: <http://www.example.org/>.
 @prefix ldes: <http://w3id.org/ldes#>.
 @prefix tree: <https://w3id.org/tree#>.

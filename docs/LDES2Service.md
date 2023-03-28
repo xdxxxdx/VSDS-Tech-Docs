@@ -60,7 +60,7 @@ In this [Github repo](https://github.com/samuvack/LDES2TimescaleDB), you will fi
 
 10. LDES members will be stored one by one in your TimescaleDB
 
-![Linked Data Event Streams and TimescaleDB for Real-time Timeseries Data Management](file:///C:/Users/samue/AppData/Local/Temp/msohtmlclip1/01/clip_image002.png)
+![Linked Data Event Streams and TimescaleDB for Real-time Timeseries Data Management](../images/Real-timeTimeseries.PNG)
 
 ```tip
 You can find more information in [this article](https://medium.com/towards-artificial-intelligence/linked-data-event-streams-and-timescaledb-for-real-time-timeseries-data-management-9e82ba336f82)
