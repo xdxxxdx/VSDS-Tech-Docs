@@ -17,7 +17,7 @@ Go to [this Github repository](https://github.com/Informatievlaanderen/VSDS-LDES
 
 Go to [this Github repository](https://github.com/Informatievlaanderen/VSDS-Linked-Data-Interactions/tree/main/ldi-core/ldes-client) for all the LDI releases of the LDES client.
 
-
+Go to [this Github repository](https://github.com/Informatievlaanderen/VSDS-Linked-Data-Interactions/tree/main/ldi-nifi/ldi-nifi-processors/ldes-client-processor) for all the Apache NiFi releases of the LDES client.
 
 
 ## Linked Data Interactions [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Informatievlaanderen_VSDS-Linked-Data-Interactions&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Informatievlaanderen_VSDS-Linked-Data-Interactions)
