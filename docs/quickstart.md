@@ -306,7 +306,7 @@ services:
 To begin, the command for launching GraphDb and Apache NiFi within a docker container is as follows:
 
 ```source-shell
-docker-compose up --build
+docker compose up --build
 ```
 Apache Nifi runs on port 8443:8443/tcp :[https://localhost:8443](https://localhost:8443/)\
 GraphDB runs on port 7200 :7200/tcp : [https://localhost:7200](https://localhost:7200/)[https://localhost:7200](https://localhost:7200/)
