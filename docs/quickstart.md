@@ -72,6 +72,8 @@ services:
     profiles:
       - delayed-started
     network_mode: service:ldes-server
+    networks:
+      - ldes
 networks:
   ldes:
     name: quick_start_network
@@ -150,7 +152,7 @@ sample:by-page  rdf:type  tree:Node .
 <https://data.vmm.be/id/loc-00019-33> a <http://def.isotc211.org/iso19156/2011/SpatialSamplingFeature#SF_SpatialSamplingFeature> 
 ```
 
-2. Please run ```curl -X POST http://localhost:8080/sample -H "Content-Type: application/ttl" -d '@sample.ttl ``` to post the `sample.ttl` to the [LDES Server](https://github.com/Informatievlaanderen/VSDS-LDESServer4J)
+2. Please run ```curl -X POST http://localhost:8080/sample -H "Content-Type: application/ttl" -d @sample.ttl ``` to post the `sample.ttl` to the [LDES Server](https://github.com/Informatievlaanderen/VSDS-LDESServer4J)
 
 3. **Now!** [LDES Server](https://github.com/Informatievlaanderen/VSDS-LDESServer4J) has [Pagination fragmentation](https://github.com/Informatievlaanderen/VSDS-LDESServer4J/tree/main/ldes-fragmentisers/ldes-fragmentisers-pagination) -ed your first [LDES](https://semiceu.github.io/LinkedDataEventStreams/) data [sample.ttl](https://github.com/VSDS-Tech-Docs/files/sample.ttl). Please use your preferred browser to reach <http://localhost:8080/sample> to have a look.
 
@@ -304,7 +306,7 @@ services:
 To begin, the command for launching GraphDb and Apache NiFi within a docker container is as follows:
 
 ```source-shell
-docker-compose up --build
+docker compose up --build
 ```
 Apache Nifi runs on port 8443:8443/tcp :[https://localhost:8443](https://localhost:8443/)\
 GraphDB runs on port 7200 :7200/tcp : [https://localhost:7200](https://localhost:7200/)[https://localhost:7200](https://localhost:7200/)
@@ -374,7 +376,7 @@ For this purpose, the three Linked Data Event streams are stored in a [GraphDB]
 
 1. Start Apache NiFi on localhost:8433
 
-2. Import data flow by importing [Apache NiFi configuration file](https://github.com/samuvack/ldes-grar/blob/main/NiFi_Flow.json)
+2. Import data flow by importing [Apache NiFi configuration file](https://raw.githubusercontent.com/samuvack/ldes-grar/main/NiFi_Flow.json)
 
 3. Add [LDES endpoint](https://grar.smartdataspace.dev-vlaanderen.be/building-units/by-page) in the LDES client
 
