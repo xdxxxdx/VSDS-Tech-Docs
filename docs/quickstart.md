@@ -15,7 +15,12 @@ _The quick start try-out is ONLY made for making _[Pagination fragmentation](ht
 [Vlaamse Smart Data Space](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/vlaamse-smart-data-space)_ projects also provide methods for transforming data to _[LDES format](https://semiceu.github.io/LinkedDataEventStreams/)_, e.g. from _[NGSI-V2](https://vloca-kennishub.vlaanderen.be/NGSI-v2)_ to _[NGSI-LD](https://en.wikipedia.org/wiki/NGSI-LD)_, from NGSI to _[OSLO](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/oslo)_ Model, from _[NGSI-V2](https://vloca-kennishub.vlaanderen.be/NGSI-v2)_ to _[LDES (LinkedDataEventStreams)](https://semiceu.github.io/LinkedDataEventStreams/)_ etc. For more info, please consult: _[VSDS Linked Data Interactions](https://github.com/Informatievlaanderen/VSDS-Linked-Data-Interactions)
 ```
 
-In this short example below, we show you how an LDES server publishes your first [LDES collection](https://semiceu.github.io/LinkedDataEventStreams/) and LDES client can link domains and systems using LDES. The whole story can be read here: [GetStarted_VSDS](https://github.com/xdxxxdx/GetStarted_VSDS)
+```tip
+Got issues deploying this example? Please post your issue on the [VSDS Tech docs repo](https://github.com/Informatievlaanderen/VSDS-Tech-Docs/issues).
+
+```
+
+In this short example below, we show you how an LDES server publishes your first [LDES collection](https://semiceu.github.io/LinkedDataEventStreams/) and LDES client can link domains and systems using LDES. 
 
 ### Before starting
 
@@ -25,7 +30,7 @@ In this short example below, we show you how an LDES server publishes your first
 
 ### Start your LDES server
 
-1.  Create a local [docker-compose.yml](https://stackedit.io/docker-compose.yml) file with the following content or you could use the current good-to-go [GetStarted_VSDS Github project](https://github.com/xdxxxdx/GetStarted_VSDS):
+1.  Create a local [docker-compose.yml](https://stackedit.io/docker-compose.yml) file with the following content:
 
 ```yaml
 version: ‘3.3’
@@ -73,7 +78,7 @@ networks:
 
 ```
 
-2. Within the working directory of [docker-compose.yml](https://xdxxxdx.github.io/GetStarted_VSDS/docker-compose.yml), please
+2. Within the working directory of docker-compose.yml, please
    run `docker compose up` to start the [LDES Server](https://github.com/Informatievlaanderen/VSDS-LDESServer4J) and [MongoDB](https://www.mongodb.com/) containers.
 
 3. **Now!** [LDES Server](https://github.com/Informatievlaanderen/VSDS-LDESServer4J) is running at port 8080 and ready for making [Pagination fragmentation](https://github.com/Informatievlaanderen/VSDS-LDESServer4J/tree/main/ldes-fragmentisers/ldes-fragmentisers-pagination) for your data. Please. use your preferred browser to reach <http://localhost:8080/sample> to have a look.
@@ -93,7 +98,7 @@ sample:by-page  rdf:type  tree:Node .
 
 ### Publish your first [LDES collection](https://semiceu.github.io/LinkedDataEventStreams/)
 
-1.  Create your own `sample.ttl` file with the following content, or you could use the current good-to-go [GetStarted_VSDS Github project](https://github.com/xdxxxdx/GetStarted_VSDS):
+1.  Create your own `sample.ttl` file with the following content:
 
 ```turtle
 @prefix dc: <http://purl.org/dc/terms/> .
@@ -147,7 +152,7 @@ sample:by-page  rdf:type  tree:Node .
 
 2. Please run ```curl -X POST http://localhost:8080/sample -H "Content-Type: application/ttl" -d '@sample.ttl ``` to post the `sample.ttl` to the [LDES Server](https://github.com/Informatievlaanderen/VSDS-LDESServer4J)
 
-3. **Now!** [LDES Server](https://github.com/Informatievlaanderen/VSDS-LDESServer4J) has [Pagination fragmentation](https://github.com/Informatievlaanderen/VSDS-LDESServer4J/tree/main/ldes-fragmentisers/ldes-fragmentisers-pagination) -ed your first [LDES](https://semiceu.github.io/LinkedDataEventStreams/) data [sample.ttl](https://github.com/xdxxxdx/GetStarted_VSDS/blob/main/sample.ttl). Please use your preferred browser to reach <http://localhost:8080/sample> to have a look.
+3. **Now!** [LDES Server](https://github.com/Informatievlaanderen/VSDS-LDESServer4J) has [Pagination fragmentation](https://github.com/Informatievlaanderen/VSDS-LDESServer4J/tree/main/ldes-fragmentisers/ldes-fragmentisers-pagination) -ed your first [LDES](https://semiceu.github.io/LinkedDataEventStreams/) data [sample.ttl](https://github.com/VSDS-Tech-Docs/files/sample.ttl). Please use your preferred browser to reach <http://localhost:8080/sample> to have a look.
 
 _The result should be as follow:_
 
@@ -233,6 +238,11 @@ Within the working directory, please run `docker compose down -v`
 *This quick start try-out is ONLY made for making *[Pagination fragmentation](https://github.com/Informatievlaanderen/VSDS-LDESServer4J/tree/main/ldes-fragmentisers/ldes-fragmentisers-pagination)* for the self-generated data type to *[LDES format](https://semiceu.github.io/LinkedDataEventStreams/)*. To support other fragments, data types, or other features, e.g., retention, caching, etc., please consult *[LDES Server Manual](https://github.com/Informatievlaanderen/VSDS-LDESServer4J)* for the configurations.*
 
 [Vlaamse Smart Data Space](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/vlaamse-smart-data-space)* projects also provide methods for transforming data to *[LDES format](https://semiceu.github.io/LinkedDataEventStreams/)*, e.g. from *[NGSI-V2](https://vloca-kennishub.vlaanderen.be/NGSI-v2)* to *[NGSI-LD](https://en.wikipedia.org/wiki/NGSI-LD)*, from NGSI to *[OSLO](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/oslo)* Model, from *[NGSI-V2](https://vloca-kennishub.vlaanderen.be/NGSI-v2)* to *[LDES (LinkedDataEventStreams)](https://semiceu.github.io/LinkedDataEventStreams/)
+
+```
+
+```tip
+Got issues deploying this example? Please post your issue on the [VSDS Tech docs repo](https://github.com/Informatievlaanderen/VSDS-Tech-Docs/issues).
 
 ```
 
