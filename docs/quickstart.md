@@ -72,6 +72,8 @@ services:
     profiles:
       - delayed-started
     network_mode: service:ldes-server
+    networks:
+      - ldes
 networks:
   ldes:
     name: quick_start_network
