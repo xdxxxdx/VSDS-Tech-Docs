@@ -101,14 +101,14 @@ sample:by-page  rdf:type  tree:Node .
 1.  Create your own `sample.ttl` file with the following content:
 
 ```turtle
-@prefix dc: <http://purl.org/dc/terms/> .
+@prefix dc:   <http://purl.org/dc/terms/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
-@prefix ns0: <http://def.isotc211.org/iso19156/2011/SamplingFeature#SF_SamplingFeatureCollection.> .
-@prefix ns1: <http://def.isotc211.org/iso19156/2011/Observation#OM_Observation.> .
-@prefix ns2: <http://def.isotc211.org/iso19103/2005/UnitsOfMeasure#Measure.> .
-@prefix ns3: <https://schema.org/> .
+@prefix ns0:  <http://def.isotc211.org/iso19156/2011/SamplingFeature#SF_SamplingFeatureCollection.> .
+@prefix ns1:  <http://def.isotc211.org/iso19156/2011/Observation#OM_Observation.> .
+@prefix ns2:  <http://def.isotc211.org/iso19103/2005/UnitsOfMeasure#Measure.> .
+@prefix ns3:  <https://schema.org/> .
 
 <urn:ngsi-ld:WaterQualityObserved:woq:1/2023-03-12T18:31:17.003Z>
   dc:isVersionOf <urn:ngsi-ld:WaterQualityObserved:woq:1> ;
@@ -391,11 +391,11 @@ For this purpose, the three Linked Data Event streams are stored in a [GraphDB]
 Below you find an example of a SPARQL query. This query returns triples with information about the parcel LDES.
 
 ```turtle
-PREFIX adres: https://data.vlaanderen.be/id/adres/
-PREFIX gebouw: https://data.vlaanderen.be/id/?gebouweenheid/
-PREFIX gebouweenheid: https://data.vlaanderen.be/ns/gebouw#
-PREFIX prov: http://www.w3.org/ns/prov#
-PREFIX generiek: https://data.vlaanderen.be/ns/generiek#
+PREFIX adres: <https://data.vlaanderen.be/id/adres/>
+PREFIX gebouw: <https://data.vlaanderen.be/id/?gebouweenheid/>
+PREFIX gebouweenheid: <https://data.vlaanderen.be/ns/gebouw#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 construct {
 ?gebouweenheid prov:generatedAtTime ?generatedAtTime .
