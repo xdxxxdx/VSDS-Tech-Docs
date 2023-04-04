@@ -4,6 +4,11 @@ sort: 8
 
 # LDES2SERVICE
 
+```tip
+Got issues deploying this example? Please post your issue on the [VSDS Tech docs repo](https://github.com/Informatievlaanderen/VSDS-Tech-Docs/issues).
+
+```
+
 ## Triple store (LDES to GraphDB)
 
 <p align="center"><img src="/VSDS-Tech-Docs/images/graphdb.png" width="80%" text-align="center"></p>

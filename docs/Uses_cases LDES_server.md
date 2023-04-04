@@ -4,6 +4,11 @@ sort: 9
 
 # USE CASE LDES SERVER
 
+```tip
+Got issues deploying this example? Please post your issue on the [VSDS Tech docs repo](https://github.com/Informatievlaanderen/VSDS-Tech-Docs/issues).
+
+```
+
 <p align="center"><img src="/VSDS-Tech-Docs/images/onboarding.png"  width="50%" text-align="center"></p>
 
 Apache Kafka, Fiware-Orien Context Broker, and MQTT can be used as a Publisher to the VSDS LDES Ecosystem. The following examples will explain the use cases.   
