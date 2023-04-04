@@ -376,7 +376,7 @@ For this purpose, the three Linked Data Event streams are stored in a [GraphDB]
 
 1. Start Apache NiFi on localhost:8433
 
-2. Import data flow by importing [Apache NiFi configuration file](https://github.com/samuvack/ldes-grar/blob/main/NiFi_Flow.json)
+2. Import data flow by importing [Apache NiFi configuration file](https://raw.githubusercontent.com/samuvack/ldes-grar/main/NiFi_Flow.json)
 
 3. Add [LDES endpoint](https://grar.smartdataspace.dev-vlaanderen.be/building-units/by-page) in the LDES client
 
