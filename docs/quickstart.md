@@ -235,9 +235,9 @@ Within the working directory, please run `docker compose down -v`
 ```note
 ***Please Note!***
 
-*This quick start try-out is ONLY made for making *[Pagination fragmentation](https://github.com/Informatievlaanderen/VSDS-LDESServer4J/tree/main/ldes-fragmentisers/ldes-fragmentisers-pagination)* for the self-generated data type to *[LDES format](https://semiceu.github.io/LinkedDataEventStreams/)*. To support other fragments, data types, or other features, e.g., retention, caching, etc., please consult *[LDES Server Manual](https://github.com/Informatievlaanderen/VSDS-LDESServer4J)* for the configurations.*
+_The purpose of the quick start try-out is solely to create _[Pagination fragmentation](https://github.com/Informatievlaanderen/VSDS-LDESServer4J/tree/main/ldes-fragmentisers/ldes-fragmentisers-pagination)_ for the self-generated data type to _[LDES format](https://semiceu.github.io/LinkedDataEventStreams/)_. To support other fragments, data types, or other features, e.g., retention, caching, etc., please consult _[LDES Server Manual](https://github.com/Informatievlaanderen/VSDS-LDESServer4J)_ for the configurations._
 
-[Vlaamse Smart Data Space](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/vlaamse-smart-data-space)* projects also provide methods for transforming data to *[LDES format](https://semiceu.github.io/LinkedDataEventStreams/)*, e.g. from *[NGSI-V2](https://vloca-kennishub.vlaanderen.be/NGSI-v2)* to *[NGSI-LD](https://en.wikipedia.org/wiki/NGSI-LD)*, from NGSI to *[OSLO](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/oslo)* Model, from *[NGSI-V2](https://vloca-kennishub.vlaanderen.be/NGSI-v2)* to *[LDES (LinkedDataEventStreams)](https://semiceu.github.io/LinkedDataEventStreams/)
+[Vlaamse Smart Data Space](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/vlaamse-smart-data-space)_ projects also provide methods for transforming data to *[LDES format](https://semiceu.github.io/LinkedDataEventStreams/)_, e.g. from _[NGSI-V2](https://vloca-kennishub.vlaanderen.be/NGSI-v2)* to *[NGSI-LD](https://en.wikipedia.org/wiki/NGSI-LD)_, from NGSI to _[OSLO](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/oslo)_ Model, from _[NGSI-V2](https://vloca-kennishub.vlaanderen.be/NGSI-v2)_ to _[LDES (LinkedDataEventStreams)](https://semiceu.github.io/LinkedDataEventStreams/).
 
 ```
 
