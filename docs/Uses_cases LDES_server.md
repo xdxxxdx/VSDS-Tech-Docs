@@ -5,7 +5,7 @@ sort: 9
 # USE CASE LDES SERVER
 
 ```tip
-Got issues deploying this example? Please post your issue on the [VSDS Tech docs repo](https://github.com/Informatievlaanderen/VSDS-Tech-Docs/issues).
+Having trouble implementing these examples? Please post your issue on the [VSDS Tech docs repo](https://github.com/Informatievlaanderen/VSDS-Tech-Docs/issues).
 
 ```
 

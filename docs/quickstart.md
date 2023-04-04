@@ -16,7 +16,7 @@ _The quick start try-out is ONLY made for making _[Pagination fragmentation](ht
 ```
 
 ```tip
-Got issues deploying this example? Please post your issue on the [VSDS Tech docs repo](https://github.com/Informatievlaanderen/VSDS-Tech-Docs/issues).
+Having trouble implementing this example? Please post your issue on the [VSDS Tech docs repo](https://github.com/Informatievlaanderen/VSDS-Tech-Docs/issues).
 
 ```
 
@@ -242,7 +242,7 @@ Within the working directory, please run `docker compose down -v`
 ```
 
 ```tip
-Got issues deploying this example? Please post your issue on the [VSDS Tech docs repo](https://github.com/Informatievlaanderen/VSDS-Tech-Docs/issues).
+Having trouble implementing this example? Please post your issue on the [VSDS Tech docs repo](https://github.com/Informatievlaanderen/VSDS-Tech-Docs/issues).
 
 ```
 
