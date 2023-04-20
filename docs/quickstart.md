@@ -3,41 +3,33 @@ sort: 1
 ---
 
 
-# QUICK START
+# Quick start
 
-## Example 1
+## LDES Server & LDES Client
+
+This example focuses on both publishing and consuming a [Linked Data Event Stream](https://semiceu.github.io/LinkedDataEventStreams/) (LDES). We start by explaining how to setup an LDES server and publish data as an LDES, followed by the setup of the LDES client to replicate an LDES. In this example, the data examples are described with [OSLO](https://data.vlaanderen.be/) (the Flemish Interoperability Program) ontologies. The [GetStarted_VSDS](https://github.com/xdxxxdx/GetStarted_VSDS) on GitHub shows how to publish data using a FIWARE Smart Data model.
 
 ```note
-**_Please Note!_**
 
-_The purpose of the quick start try-out is solely to create _[Pagination fragmentation](https://github.com/Informatievlaanderen/VSDS-LDESServer4J/tree/main/ldes-fragmentisers/ldes-fragmentisers-pagination)_ for the self-generated data type:_[https://www.w3.org/TR/vocab-ssn-ext/#sosa:ObservationCollection](https://www.w3.org/TR/vocab-ssn-ext/#sosa:ObservationCollection)_. To support other fragments, data types, or other features e.g., retention, caching, etc., please consult _[LDES Server Manual](https://github.com/Informatievlaanderen/VSDS-LDESServer4J)_ for the configurations._
-
-[Vlaamse Smart Data Space](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/vlaamse-smart-data-space)_ projects also provide methods for transforming data to _[LDES format](https://semiceu.github.io/LinkedDataEventStreams/)_, e.g. from _[NGSI-V2](https://vloca-kennishub.vlaanderen.be/NGSI-v2)_ to _[NGSI-LD](https://en.wikipedia.org/wiki/NGSI-LD)_, from NGSI to _[OSLO](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/oslo)_ Model, from _[NGSI-V2](https://vloca-kennishub.vlaanderen.be/NGSI-v2)_ to _[LDES (LinkedDataEventStreams)](https://semiceu.github.io/LinkedDataEventStreams/)_ etc. For more info, please consult: _[VSDS Linked Data Interactions](https://github.com/Informatievlaanderen/VSDS-Linked-Data-Interactions)
-```
-
-```tip
-Having trouble implementing this example? Please post your issue on the [VSDS Tech docs repo](https://github.com/Informatievlaanderen/VSDS-Tech-Docs/issues).
+This quick start example demonstrates only a small amount of the capabilities of the LDES Server. For more information about the LDES server, please consult the [LDES Server Manual](https://github.com/Informatievlaanderen/VSDS-LDESServer4J).
 
 ```
-
-In this short example below, we show you how an LDES server publishes your first [LDES collection](https://semiceu.github.io/LinkedDataEventStreams/) and LDES client can link domains and systems using LDES. 
 
 ### Before starting
 
-1.  [Docker](https://docker.com/) has been installed on your device.
-2.  Local Ports 8080, and 27017 are accessible.
-3.  The command script is written in [bash](https://en.wikipedia.org/wiki/Bash_%28Unix_shell%29) code. Please modify it accordingly.
+1.  Make sure [Docker](https://docker.com/) has been installed on your device.
+2.  Local Ports _8080_, and _27017_ are accessible.
+3.  The command script is written in [bash](https://en.wikipedia.org/wiki/Bash_%28Unix_shell%29) code. Please modify it accordingly.
 
-### Start your LDES server
+### Setup an LDES Server
 
-1.  Create a local [docker-compose.yml](https://stackedit.io/docker-compose.yml) file with the following content:
-
+- Create a local `docker-compose.yml` file with the content below. **TODO: add extra information about the configuration!!!!**
 ```yaml
 version: ‘3.3’
 services:
   ldes-server:
     container_name: quick-start_ldes-server
-    image: ghcr.io/informatievlaanderen/ldes-server:20230314T0913
+    image: ghcr.io/informatievlaanderen/ldes-server:latest
     environment:
       - SIS_DATA=/tmp
       - SPRING_DATA_MONGODB_DATABASE=sample
@@ -65,25 +57,14 @@ services:
       - 27017:27017
     networks:
       - ldes
-  ldes-cli:
-    image: ghcr.io/informatievlaanderen/ldes-cli:20230222T0959
-    container_name: quick-start_ldes-client-cli
-    command: "--url http://localhost:8080/sample/by-page --input-format text/turtle"
-    profiles:
-      - delayed-started
-    network_mode: service:ldes-server
-    networks:
-      - ldes
 networks:
   ldes:
     name: quick_start_network
-
 ```
 
-2. Within the working directory of docker-compose.yml, please
-   run `docker compose up` to start the [LDES Server](https://github.com/Informatievlaanderen/VSDS-LDESServer4J) and [MongoDB](https://www.mongodb.com/) containers.
-
-3. **Now!** [LDES Server](https://github.com/Informatievlaanderen/VSDS-LDESServer4J) is running at port 8080 and ready for making [Pagination fragmentation](https://github.com/Informatievlaanderen/VSDS-LDESServer4J/tree/main/ldes-fragmentisers/ldes-fragmentisers-pagination) for your data. Please. use your preferred browser to reach <http://localhost:8080/sample> to have a look.
+-  Run `docker-compose up` within the work directory of `.yml` file, to start the containers.
+-  The LDES Server is now available at port `8080` and accepts members via `HTTP POST` requests.
+- Browse to [http://localhost:8080/sample](http://localhost:8080/sample) to have a first look.
 
 _The result should be as follow:_
 
@@ -98,19 +79,19 @@ _The result should be as follow:_
 sample:by-page  rdf:type  tree:Node .
 ```
 
-### Publish your first [LDES collection](https://semiceu.github.io/LinkedDataEventStreams/)
+### Add data to the LDES Server
 
-1.  Create your own `sample.ttl` file with the following content:
+-  Create a `sample.ttl` file with the following content:
 
 ```turtle
-@prefix dc:   <http://purl.org/dc/terms/> .
+@prefix dc: <http://purl.org/dc/terms/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
-@prefix ns0:  <http://def.isotc211.org/iso19156/2011/SamplingFeature#SF_SamplingFeatureCollection.> .
-@prefix ns1:  <http://def.isotc211.org/iso19156/2011/Observation#OM_Observation.> .
-@prefix ns2:  <http://def.isotc211.org/iso19103/2005/UnitsOfMeasure#Measure.> .
-@prefix ns3:  <https://schema.org/> .
+@prefix ns0: <http://def.isotc211.org/iso19156/2011/SamplingFeature#SF_SamplingFeatureCollection.> .
+@prefix ns1: <http://def.isotc211.org/iso19156/2011/Observation#OM_Observation.> .
+@prefix ns2: <http://def.isotc211.org/iso19103/2005/UnitsOfMeasure#Measure.> .
+@prefix ns3: <https://schema.org/> .
 
 <urn:ngsi-ld:WaterQualityObserved:woq:1/2023-03-12T18:31:17.003Z>
   dc:isVersionOf <urn:ngsi-ld:WaterQualityObserved:woq:1> ;
@@ -152,9 +133,10 @@ sample:by-page  rdf:type  tree:Node .
 <https://data.vmm.be/id/loc-00019-33> a <http://def.isotc211.org/iso19156/2011/SpatialSamplingFeature#SF_SpatialSamplingFeature> 
 ```
 
-2. Please run ```curl -X POST http://localhost:8080/sample -H "Content-Type: application/ttl" -d @sample.ttl ``` to post the `sample.ttl` to the [LDES Server](https://github.com/Informatievlaanderen/VSDS-LDESServer4J)
+- Please run ```curl -X POST http://localhost:8080/sample -H "Content-Type: application/ttl" -d '@sample.ttl ``` to post the `sample.ttl` to the LDES Server.
 
-3. **Now!** [LDES Server](https://github.com/Informatievlaanderen/VSDS-LDESServer4J) has [Pagination fragmentation](https://github.com/Informatievlaanderen/VSDS-LDESServer4J/tree/main/ldes-fragmentisers/ldes-fragmentisers-pagination) -ed your first [LDES](https://semiceu.github.io/LinkedDataEventStreams/) data [sample.ttl](https://github.com/VSDS-Tech-Docs/files/sample.ttl). Please use your preferred browser to reach <http://localhost:8080/sample> to have a look.
+- The data is added to the LDES Server and part of the LDES.
+- Browse to <http://localhost:8080/sample> to have a look.
 
 _The result should be as follow:_
 
@@ -173,16 +155,22 @@ sample:by-page  rdf:type  tree:Node ;
                          tree:node  <http://localhost:8080/sample/by-page?pageNumber=1>
                        ] .
  ```      
+The LDES view `by-page` now contains a relation to a fragment containing the LDES member described in `sample.ttl`. Follow the `tree:node` <http://localhost:8080/sample/by-page?pageNumber=1> to visit the first page of the LDES view <http://localhost:8080/sample/by-page>.
 
-Follow the `tree:node` <http://localhost:8080/sample/by-page?pageNumber=1>, you could reach the first page of your data set.
+### Replicate an LDES with the LDES Client
 
+- Create a `docker-compose.yml` file or extend the previous one with the following content:
+```yaml
+version: ‘3.3’
+services:
+  ldes-cli:
+    image: ghcr.io/informatievlaanderen/ldes-cli:20230222T0959
+    container_name: quick-start_ldes-client-cli
+    command: "--url http://localhost:8080/sample/by-page --input-format text/turtle"
+```
 
-### Synchronise your LDES dataset using [LDES Client](https://github.com/orgs/Informatievlaanderen/packages/container/package/ldes-cli)
-
-- Please run `docker compose up ldes-cli -d` to start [LDES Client](https://github.com/orgs/Informatievlaanderen/packages/container/package/ldes-cli) docker container.
-
-- The posted LDES stream: <http://localhost:8080/sample/by-time> will be followed and LDES members will be outputted to the console (only once) of the ldes-cli docker container. As follow:
-
+- Run `docker compose up ` to start the LDES Client docker container.
+- The LDES Client will use the LDES view <http://localhost:8080/sample/by-page> to replicate LDES member and output them to the console of the `ldes-cli` docker container.
 
 ```
 2023-03-12 21:48:00 [pool-1-thread-1] INFO be.vlaanderen.informatievlaanderen.ldes.client.cli.services.FragmentProcessor - Fragment http://localhost:8080/sample/by-page has 0 member(s)
@@ -232,7 +220,7 @@ Follow the `tree:node` <http://localhost:8080/sample/by-page?pageNumber=1>, yo
 Within the working directory, please run `docker compose down -v`
 
 
-## Example 2
+## LDES2Service
 
 ```note
 ***Please Note!***
