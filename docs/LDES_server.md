@@ -9,7 +9,7 @@ The Linked Data Event Stream (LDES) [server](https://github.com/Informatievlaand
 
 <p align="center"><img src="/VSDS-Tech-Docs/images/LDES%20server.png" width="60%" text-align="center"></p>
 
-To help data publishers make their datasets available as LDES, an open-source LDES server was developed in the context of the [VSDS project](https://www.vlaanderen.be/vlaamse-smart-data-space-portaal). The server can be configured to meet the organisation's specific needs. Functionalities include **retention policy**, **fragmentation** and **pagination**  for managing and processing large amounts of data more efficiently and ensuring the efficient use of storage. 
+To help data publishers make their datasets available as LDES, an open-source LDES server was developed in the context of the [VSDS project](https://www.vlaanderen.be/vlaamse-smart-data-space-portaal). The server can be configured to meet the organisation's specific needs. Functionalities include **retention policy**, **fragmentation** and **pagination**  for managing and processing large amounts of data more efficiently and ensuring the efficient use of storage. 
 
 ![](../images/scalableApplications.png)
 
@@ -19,7 +19,7 @@ The LDES server is available as on open-source building block on [GitHub](https:
 
 ## Ingesting sources (HTTP in)
 
-The LDES server is able to receive data via HTTP ingestion. Specifically, the server expects a single object (member) to be sent as input via a POST request. In case the dataset still contains state objects, each of these state objects first must be converted to a version object before being ingested in the server. This essential step ensures the ingested objects are compliant with the [LDES definition](/docs/Specification.md#what-is-a-linked-data-event-stream).
+The LDES server is able to receive data via HTTP ingestion. Specifically, the server expects a single object (member) to be sent as input via a POST request. If the dataset still contains state objects, each of these must first be converted to a version object before being ingested in the server. This essential step ensures the ingested objects comply with the [LDES definition](/docs/Specification.md#what-is-a-linked-data-event-stream).
 
 Once the objects in the dataset are LDES-compliant members (whether or not after conversion to a version object) and the LDES member has been added to the LDES server, the server can effortlessly publish the LDES member as part of the LDES.
 
@@ -46,7 +46,7 @@ rest:
 
 ## SHACL
 
-The LDES specification prescribes that each LDES must link to a SHACL shape, providing a machine-readable definition of the members in the collection. When starting the server, it is possible to provide a SHACL shape via through an RDF file. If a SHACL shape was provided on startup, the LDES server reads it before the ingestion process starts and the SHACL shape is used to validate the members that are ingested. Only valid members are ingested in the LDES server. At last, the SHACL shape is also published as part of the LDES on the Web.
+The LDES specification prescribes that each LDES must link to a SHACL shape, providing a machine-readable definition of the members in the collection. If a SHACL shape was provided on startup, the LDES server reads it before the ingestion process starts and the SHACL shape is used to validate the ingested members. Only valid members are ingested in the LDES server. When starting the server, it is possible to provide a SHACL shape via through an RDF file. At last, the SHACL shape is also published as part of the LDES on the Web.
 
 ```note
 SHACL stands for Shapes Constraint Language and is used to define a set of constraints which are used to verify to conformity of RDF data with these constraints.
@@ -72,7 +72,7 @@ The fragmenting of a Linked Data Event Stream (LDES) is a crucial technique for 
 
 ### Partitioning
 
-When applying partitioning, the LDES server will create fragments based on the order of arrival of the LDES member, and is a linear fragmentation. The members that arrive first on the LDES server are added to the first page, while the latest members are always included on the latest page. This fragmentation is considered to be the most basic and default fragmentation, because it stands for the exact reason the LDES specification was created, namely replication and synchronising with a dataset.
+When applying partitioning, the LDES server will create fragments based on the order of arrival of the LDES member, and is a linear fragmentation. This fragmentation is considered the most basic and default fragmentation because it stands for the exact reason the LDES specification was created: replication and synchronising with a dataset. The members arriving on the LDES server are added to the first page, while the latest members are always included on the latest page.
 
 The expected parameter to apply a partioning is a `member limit`, indicating the amount of members that can be added to each page before creating a new page.
 
@@ -116,7 +116,7 @@ config:
 
 ### Substring fragmentation
 
-[Substring fragmentation](https://github.com/Informatievlaanderen/VSDS-LDESServer4J/tree/main/ldes-fragmentisers/ldes-fragmentisers-substring) involves dividing the data stream into smaller pieces based on specific substrings, or patterns, within the data. 
+[Substring fragmentation](https://github.com/Informatievlaanderen/VSDS-LDESServer4J/tree/main/ldes-fragmentisers/ldes-fragmentisers-substring) involves dividing the data stream into smaller pieces based on specific substrings, or patterns, within the data. 
 
 Example of substring fragmentation configuration file
 
@@ -210,7 +210,7 @@ for a given property should be used to create the correct relations. This is not
 
 ### Geospatial fragmentation
 
-Consider the scenario where the address registry is published as an LDES that using partitioning. In such a case, data consumers are required to replicate the entire linear set of fragments, despite only being interested in a smaller subset of the dataset. For instance, the city of Brussels may only require addresses within its geographical region and is not interested in other addresses. However, with the partitioned LDES, they would need to iterate through all the fragments and filter the LDES members (address version objects) on the client-side. By utilizing geospatial fragmentation, the data can be divided into smaller pieces (tiles) based on geographical location. This facilitates filtering on the fragment level (tiles) and allows for processing and analysis of data within specific geospatial tiles.
+Consider the scenario where the address registry is published as an LDES that using partitioning. In such a case, data consumers are required to replicate the entire linear set of fragments, despite only being interested in a smaller subset of the dataset. For instance, the city of Brussels may only require addresses within its geographical region and is not interested in other addresses. However, with the partitioned LDES, they would need to iterate through all the fragments and filter the LDES members (address version objects) on the client-side. By utilising geospatial fragmentation, the data can be divided into smaller pieces (tiles) based on geographical location. This facilitates filtering on the fragment level (tiles) and allows for processing and analysis of data within specific geospatial tiles.
 
 <p align="center"><img src="/VSDS-Tech-Docs/images/geospatial.png" width="60%" text-align="center"></p>
 
@@ -330,7 +330,7 @@ Note that the `generatedAtTime=2023-02-15T10:14:28.262Z` is an example, this can
 
 #### Combining geospatial fragmentation and partioning
 
-The LDES server typically adds an LDES member to the "lowest" possible fragment, which in the case of geospatial fragmentation would be the fragment representing the corresponding geospatial tile. However, some fragments/tiles may have a high number of members, while others may have none. In the worst-case scenario, all members may be added to one geospatial tile/fragment, leading to an enormous fragment. To mitigate this issue, combining geospatial fragmentation with partitioning can be a useful approach. Then partioning is applied within every geospatial tile, resulting in a set of linear fragments for every geospatial tile. Doing so, all members can still end up in the same geospatial tile, but now clients have a set of linear fragments to iterate through insteads of one enormous fragment. More detailed information is available in the [example below](#when-we-have-a-timebased-sub-fragmentation-below-geospatial-fragmentation).
+The LDES server typically adds an LDES member to the "lowest" possible fragment, which in the case of geospatial fragmentation, would be the fragment representing the corresponding geospatial tile. However, some fragments/tiles may have many members, while others may have none. In the worst-case scenario, all members may be added to one geospatial tile/fragment, leading to an enormous fragment. Combining geospatial fragmentation with partitioning can be a useful approach to mitigate this issue. Then partitioning is applied within every geospatial tile, resulting in a set of linear fragments for every geospatial tile. Doing so, all members can still end up in the same geospatial tile, but now clients have a set of linear fragments to iterate through instead of one enormous fragment. More detailed information is available in the [example below](#when-we-have-a-timebased-sub-fragmentation-below-geospatial-fragmentation).
 
 ![](content/geospatial_algorithm.drawio.png)
 
@@ -363,14 +363,14 @@ As an example, the time-based retention configuration example above is set up to
 
 ## Hosting the LDES stream SHACL shape
 
-The LDES Server facilitates hosting a SHACL shape describing the members in the LDES. SHACL (Shapes Constraint Language) is a language used to validate RDF graphs against a set of conditions provided as shapes and other constructs in an RDF graph. Through configuration it is possible to [reference an existing SHACL shape](https://github.com/Informatievlaanderen/VSDS-LDESServer4J#example-http-ingest-fetch-configuration) via an URL or to provide a [static file](https://github.com/Informatievlaanderen/VSDS-LDESServer4J#example-serving-static-content) with an RDF description of the SHACL shape.
+SHACL (Shapes Constraint Language) is a language used to validate RDF graphs against a set of conditions provided as shapes and other constructs in an RDF graph. The LDES Server facilitates hosting a SHACL shape describing the members in the LDES. Through configuration, it is possible to [reference an existing SHACL shape](https://github.com/Informatievlaanderen/VSDS-LDESServer4J#example-http-ingest-fetch-configuration) via an URL or to provide a [static file](https://github.com/Informatievlaanderen/VSDS-LDESServer4J#example-serving-static-content) with an RDF description of the SHACL shape.
 
 ## Hosting DCAT metadata
 
 DCAT is a standardised RDF vocabulary to describe data catalogues on the Web, allowing easy interoperability between catalogues. Using a standard schema, DCAT enhances discoverability and facilitates federated search across multiple catalogues.
 
 The LDES server facilitates hosting DCAT metadata when publishing an LDES. Through configuration, as with the SHACL shape, it is possible to reference an existing DCAT via an URI or to provide a static file containing an RDF description of the DCAT.
-More information on how to configure DCAT on the LDES Server can be found [here](https://github.com/Informatievlaanderen/VSDS-LDESServer4J#example-serving-dcat-metadata).
+More information on configuring DCAT on the LDES Server can be found [here](https://github.com/Informatievlaanderen/VSDS-LDESServer4J#example-serving-dcat-metadata).
 
 
 ## Setup of the LDES Server
