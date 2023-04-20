@@ -2,7 +2,7 @@
 sort: 6
 ---
 
-# Linked Data Interactions
+# LINKED DATA INTERACTIONS
 
 The Linked Data Interactions Repo (LDI) is a bundle of basic SDKs used to receive, generate, transform and output Linked Data available as open-source components on [GitHub](https://github.com/Informatievlaanderen/VSDS-Linked-Data-Interactions). The repository has the following structure
 - ldi-api → contains a bundle of generic interfaces and classes to be used in the LDI SDKs

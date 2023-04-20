@@ -2,7 +2,7 @@
 sort: 3
 ---
 
-# Specification
+# SPECIFICATION
 
 ## What is a Linked data Event Stream?
 
