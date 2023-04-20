@@ -309,7 +309,7 @@ To begin, the command for launching GraphDb and Apache NiFi within a docker cont
 docker compose up --build
 ```
 Apache Nifi runs on port 8443:8443/tcp :[https://localhost:8443](https://localhost:8443/)\
-GraphDB runs on port 7200 :7200/tcp : [http://localhost:7200](http://localhost:7200/)[http://localhost:7200](http://localhost:7200/)
+GraphDB runs on port 7200 :7200/tcp : [http://localhost:7200](http://localhost:7200/)
 
 A data flow can be built up by dragging in building blocks in the graphical user interface of Apache NiFi. This docker container contains all the components out the latest version of the LDES workbench (e.g., latest LDES Client, LDES server, etc.). Every data stream can be transformed into a Linked Data Event Stream with a conversion data flow.
 
