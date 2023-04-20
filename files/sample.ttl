@@ -8,10 +8,10 @@
 @prefix ns3: <https://schema.org/> .
 
 <urn:ngsi-ld:WaterQualityObserved:woq:1/2023-03-12T18:31:17.003Z>
-  dc:isVersionOf <urn:ngsi-ld:WaterQualityObserved:woq:1> ;
+    dc:isVersionOf <urn:ngsi-ld:WaterQualityObserved:woq:1> ;
   prov:generatedAtTime "2023-03-12T18:31:17.003Z"^^xsd:dateTime ;
   sosa:hasFeatureOfInterest "spt-00035-79" ;
-  ns0:member <https://data.vmm.be/id/loc-00019-33>, [
+          ns0:member <https://data.vmm.be/id/loc-00019-33>, [
     sosa:madeBySensor <urn:ngsi-v2:cot-imec-be:Device:imec-iow-UR5gEycRuaafxnhvjd9jnU> ;
     ns1:result [ ns2:value [
         ns3:value 2.043000e+1 ;
@@ -23,7 +23,7 @@
     a <http://def.isotc211.org/iso19156/2011/Measurement#OM_Measurement>
   ], [
     sosa:madeBySensor <urn:ngsi-v2:cot-imec-be:Device:imec-iow-UR5gEycRuaafxnhvjd9jnU> ;
-    ns1:result [ ns2:value [
+            ns1:result [ ns2:value [
         ns3:value 1442 ;
         ns3:unitCode <https://data.vmm.be/id/HP>
       ] ] ;
@@ -32,7 +32,7 @@
     ns1:featureOfInterest <https://data.vmm.be/id/spt-00035-79> ;
     a <http://def.isotc211.org/iso19156/2011/Measurement#OM_Measurement>
   ], [
-    sosa:madeBySensor <urn:ngsi-v2:cot-imec-be:Device:imec-iow-UR5gEycRuaafxnhvjd9jnU> ;
+          sosa:madeBySensor <urn:ngsi-v2:cot-imec-be:Device:imec-iow-UR5gEycRuaafxnhvjd9jnU> ;
     ns1:result [ ns2:value [
         ns3:value 6150 ;
         ns3:unitCode <https://data.vmm.be/id/G42>

@@ -311,30 +311,10 @@ GraphDB runs on port 7200 :7200/tcp : [https://localhost:7200](https://localho
 
 A data flow can be built up by dragging in building blocks in the graphical user interface of Apache NiFi. This docker container contains all the components out the latest version of the LDES workbench (e.g., latest LDES Client, LDES server, etc.). Every data stream can be transformed into a Linked Data Event Stream with a conversion data flow.
 
-### Publishing your first [LDES](https://semiceu.github.io/LinkedDataEventStreams/)
+### Starting from a published [LDES](https://semiceu.github.io/LinkedDataEventStreams/)
 
 
-In this example, we start from data streams outputted via Apache Kafka.
-
-![](../images/kafka.png)
-
-A data flow is configured in Apache Nifi that converts these Kafka topics to an LDES server. The LDES server is a configurable component used to ingest, store, transform, and (re-)publish a Linked Data Event Stream. For more information about an LDES server, go to LDES server.
-
-Because we are dealing with 'state' objects, we need to convert these objects into version objects. The data flow below converts the Apache Kafka topics into JSON members. Afterwards, the spatial reference system is changed to the local coordinate system of Flanders (Lambert 72)*.*
-
-1. Go to localhost:8433/
-
-2. Login with credentials
-
-3. Open data flow by importing Apache NiFi configuration file
-
-4. Kafka topic
-
-5. Start Apachi NiFi data flow
-
-![](../images/apache_grar_onboarding.png)
-
-Now that the Kafka topics are converted into a version object, the LDES server can publish these members into LDES members.
+In this example, we start from published LDES
 
 ```turtle
 @prefix conceptscheme: <https://data.vlaanderen.be/id/conceptscheme/> .
