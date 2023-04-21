@@ -16,13 +16,20 @@
             <dd>
                 <a href="https://github.com/Informatievlaanderen/VSDS-Tech-Docs" title="{{ __.stars | default: 'Stars' }}: {{ rest.stargazers_count }}">
                     <i class="fa fa-github"></i>
-                    {{ __.homepage | default: "Homepage" }}
+                    {{ __.homepage | default: "Github" }}
                 </a>
             </dd>
             <dd>
                 <a href="https://github.com/Informatievlaanderen/VSDS-Tech-Docs/issues" title="{{ __.open_issues | default: 'Open issues' }}: {{ rest.open_issues }}">
                     <i class="fa fa-question-circle-o"></i>
                     {{ __.issues | default: "Issues" }}
+                </a>
+            </dd>
+            dt>{{ __.github | default: "VSDS Portal" }}</dt>
+            <dd>
+                <a href="https://www.vlaanderen.be/vlaamse-smart-data-space-portaal" title="{{ __.stars | default: 'Stars' }}: {{ rest.stargazers_count }}">
+                    <i class="fa fa-home"></i>
+                    {{ __.homepage | default: "VSDS Portal" }}
                 </a>
             </dd>
 
