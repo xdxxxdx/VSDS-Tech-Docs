@@ -25,7 +25,7 @@ This quick start example demonstrates only a small amount of the capabilities of
 
 - Create a local `docker-compose.yml` file with the content below.
 ```yaml
-version: '3.3'
+version: "3.3"
 services:
   ldes-server:
     container_name: quick_start_ldes-server
@@ -161,12 +161,13 @@ The LDES view `by-page` now contains a relation to a fragment containing the LDE
 
 - Create a `docker-compose.yml` file or extend the previous one with the following content:
 ```yaml
-version: ‘3.3’
+version: ‘3.3'
 services:
   ldes-cli:
     image: ghcr.io/informatievlaanderen/ldes-cli:20230222T0959
     container_name: quick-start_ldes-client-cli
     command: "--url http://localhost:8080/sample/by-page --input-format text/turtle"
+    network_mode: host    
 ```
 
 - Run `docker compose up ` to start the LDES Client docker container.
