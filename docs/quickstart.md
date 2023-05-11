@@ -161,7 +161,7 @@ The LDES view `by-page` now contains a relation to a fragment containing the LDE
 
 - Create a `docker-compose.yml` file or extend the previous one with the following content:
 ```yaml
-version: ‘3.3’
+version: '3.3'
 services:
   ldes-cli:
     image: ghcr.io/informatievlaanderen/ldes-cli:20230222T0959
