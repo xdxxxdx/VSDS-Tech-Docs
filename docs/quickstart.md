@@ -62,7 +62,7 @@ networks:
     name: quick_start_network
 ```
 
--  Run `docker-compose up` within the work directory of `.yml` file, to start the containers.
+-  Run `docker compose up` within the work directory of `.yml` file, to start the containers.
 -  The LDES Server is now available at port `8080` and accepts members via `HTTP POST` requests.
 - Browse to [http://localhost:8080/sample](http://localhost:8080/sample) to have a first look.
 
@@ -133,7 +133,7 @@ sample:by-page  rdf:type  tree:Node .
 <https://data.vmm.be/id/loc-00019-33> a <http://def.isotc211.org/iso19156/2011/SpatialSamplingFeature#SF_SpatialSamplingFeature> 
 ```
 
-- Please run ```curl -X POST http://localhost:8080/sample -H "Content-Type: application/ttl" -d '@sample.ttl ``` to post the `sample.ttl` to the LDES Server.
+- Please run ```curl -X POST http://localhost:8080/sample -H "Content-Type: application/ttl" -d '@sample.ttl' ``` to post the `sample.ttl` to the LDES Server.
 
 - The data is added to the LDES Server and part of the LDES.
 - Browse to <http://localhost:8080/sample> to have a look.
