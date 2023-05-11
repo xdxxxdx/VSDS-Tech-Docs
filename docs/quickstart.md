@@ -27,39 +27,39 @@ This quick start example demonstrates only a small amount of the capabilities of
 ```
 version: '3.3'
 services:
-  ldes-server:
-    container_name: quick_start_ldes-server
-    image: ghcr.io/informatievlaanderen/ldes-server:20230314T0913
-    environment:
-      - SIS_DATA=/tmp
-      - SPRING_DATA_MONGODB_DATABASE=sample
-      - LDES_COLLECTIONNAME=sample
-      - LDES_MEMBERTYPE=https://www.w3.org/TR/vocab-ssn-ext/#sosa:ObservationCollection
-      - SPRING_DATA_MONGODB_HOST=ldes-mongodb
-      - SPRING_DATA_MONGODB_PORT=27017
-      - LDES_HOSTNAME=http://localhost:8080
-      - LDES_SHAPE=
-      - VIEW_TIMESTAMPPATH=http://www.w3.org/ns/prov#generatedAtTime
-      - VIEW_VERSIONOFPATH=http://purl.org/dc/terms/isVersionOf
-      - VIEWS_0_FRAGMENTATIONS_0_NAME=pagination
-      - VIEWS_0_NAME=by-page
-      - VIEWS_0_FRAGMENTATIONS_0_CONFIG_MEMBERLIMIT=1
-    ports:
-      - 8080:8080
-    networks:
-      - ldes
-    depends_on:
-      - ldes-mongodb
-  ldes-mongodb:
-    container_name: quick_start_ldes-mongodb
-    image: mongo:6.0.4
-    ports:
-      - 27017:27017
-    networks:
-      - ldes
+   ldes-server:
+     container_name: quick_start_ldes-server
+     image: ghcr.io/informatievlaanderen/ldes-server:20230314T0913
+     environment:
+       - SIS_DATA=/tmp
+       - SPRING_DATA_MONGODB_DATABASE=sample
+       - LDES_COLLECTIONNAME=sample
+       - LDES_MEMBERTYPE=https://www.w3.org/TR/vocab-ssn-ext/#sosa:ObservationCollection
+       - SPRING_DATA_MONGODB_HOST=ldes-mongodb
+       - SPRING_DATA_MONGODB_PORT=27017
+       - LDES_HOSTNAME=http://localhost:8080
+       - LDES_SHAPE=
+       - VIEW_TIMESTAMPPATH=http://www.w3.org/ns/prov#generatedAtTime
+       - VIEW_VERSIONOFPATH=http://purl.org/dc/terms/isVersionOf
+       - VIEWS_0_FRAGMENTATIONS_0_NAME=pagination
+       - VIEWS_0_NAME=by-page
+       - VIEWS_0_FRAGMENTATIONS_0_CONFIG_MEMBERLIMIT=1
+     ports:
+       - 8080:8080
+     networks:
+       - ldes
+     depends_on:
+       - ldes-mongodb
+   ldes-mongodb:
+     container_name: quick_start_ldes-mongodb
+     image: mongo:6.0.4
+     ports:
+       - 27017:27017
+     networks:
+       - ldes
 networks:
-  ldes:
-      name: quick_start_network
+   ldes:
+       name: quick_start_network
 ```
 
 -  Run `docker compose up` within the work directory of `.yml` file, to start the containers.
