@@ -23,7 +23,7 @@ This quick start example demonstrates only a small amount of the capabilities of
 
 ### Setup an LDES Server
 
-- Create a local `docker-compose.yml` file with the content below. **TODO: add extra information about the configuration!!!!**
+- Create a local `docker-compose.yml` file with the content below.
 ```yaml
 version: '3.3'
 services:
