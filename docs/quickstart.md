@@ -29,7 +29,7 @@ version: '3.3'
 services:
   ldes-server:
     container_name: quick_start_ldes-server
-    image: ghcr.io/informatievlaanderen/ldes-server:latest
+    image: ghcr.io/informatievlaanderen/ldes-server:20230314T0913
     environment:
       - SIS_DATA=/tmp
       - SPRING_DATA_MONGODB_DATABASE=sample
@@ -59,7 +59,7 @@ services:
       - ldes
 networks:
   ldes:
-    name: quick_start_network
+      name: quick_start_network
 ```
 
 -  Run `docker compose up` within the work directory of `.yml` file, to start the containers.
