@@ -163,11 +163,11 @@ The LDES view `by-page` now contains a relation to a fragment containing the LDE
 ```yaml
 version: '3.3'
 services:
-   ldes-cli:
-     image: ghcr.io/informatievlaanderen/ldes-cli:20230222T0959
-     container_name: quick-start_ldes-client-cli
-     command: "--url http://localhost:8080/sample/by-page --input-format text/turtle"
-     network_mode: host
+      ldes-cli:
+            image: ghcr.io/informatievlaanderen/ldes-cli:20230222T0959
+            container_name: quick-start_ldes-client-cli
+            command: "--url http://localhost:8080/sample/by-page --input-format text/turtle"
+            network_mode: host
 ```
 
 - Run `docker compose up ` to start the LDES Client docker container.
