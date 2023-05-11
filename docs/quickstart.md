@@ -25,10 +25,10 @@ This quick start example demonstrates only a small amount of the capabilities of
 
 - Create a local `docker-compose.yml` file with the content below. **TODO: add extra information about the configuration!!!!**
 ```yaml
-version: ‘3.3’
+version: '3.3'
 services:
   ldes-server:
-    container_name: quick-start_ldes-server
+    container_name: quick_start_ldes-server
     image: ghcr.io/informatievlaanderen/ldes-server:latest
     environment:
       - SIS_DATA=/tmp
@@ -51,7 +51,7 @@ services:
     depends_on:
       - ldes-mongodb
   ldes-mongodb:
-    container_name: quick-start_ldes-mongodb
+    container_name: quick_start_ldes-mongodb
     image: mongo:6.0.4
     ports:
       - 27017:27017
