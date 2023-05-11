@@ -218,7 +218,7 @@ services:
 
 ### Tear down the infrastructure and remove the volumes
 
-Within the working directory, please run `docker compose down -v`
+Within the working directory, please run `docker rm -f $(docker ps -a -q)`
 
 
 ## LDES2Service
