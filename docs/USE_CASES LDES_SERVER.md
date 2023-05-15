@@ -53,14 +53,14 @@ Please follow [README.md](https://github.com/Informatievlaanderen/VSDS-LDES-E2E-
 
 The FIWARE-Orion Context Broker (OCB) can be integrated as a data provider with the VSDS LDES (Linked Data Event Streams) Server. The OCB is an open-source software component developed by FIWARE that can manage real-time context information by receiving updates from IoT devices, sensors, and other sources and storing this information in a centralized location.
 
-One example of this integration is demonstrated in the diagram below, which illustrates the use case of onboarding the Internet of Water (VMM) data. The details of this use case locate at [Orien Context Broker - IOW.](https://github.com/Informatievlaanderen/VSDS-LDES-E2E-testing/tree/main/use-cases/iow)   
+One example of this integration is demonstrated in the diagram below, which illustrates the use case of onboarding the Internet of Water (VMM) data. The details of this use case locate at [Orien Context Broker - IOW.](https://github.com/Informatievlaanderen/VSDS-Onboarding-VMM/tree/main/iow) 
 
 
 <p align="center"><img src="/VSDS-Tech-Docs/images/orion_onboarding_iow.png"  width="70%" text-align="center"></p>
 
 In this case, the OCB is integrated into the LDES ecosystem to publish context updates to an LDES stream. The VSDS NIFI solution is used to translate the context data into LDES events and publish them to the LDES stream via an update attributes processor, an OSLO converter processor, and an LdesConverter process NIFI pipeline.
 
-Once the context updates are published to the LDES Sever in LDES formatted stream, they can be processed and stored in the LDES Server as linked data. This makes the context information available for further analysis and uses in other systems. An example NIFI setup with Fiware-Orien Context Broker can be as follow, which locates at [workflow.json](https://github.com/Informatievlaanderen/VSDS-LDES-E2E-testing/blob/main/use-cases/iow/workflow.json).
+Once the context updates are published to the LDES Sever in LDES formatted stream, they can be processed and stored in the LDES Server as linked data. This makes the context information available for further analysis and uses in other systems. An example NIFI setup with Fiware-Orien Context Broker can be as follow, which locates at [workflow.json](https://github.com/Informatievlaanderen/VSDS-Onboarding-VMM/blob/main/iow/workflow.json).
 
-Please follow [README.md](https://github.com/Informatievlaanderen/VSDS-LDES-E2E-testing/blob/main/use-cases/iow/README.md) for step-by-step guide.
+Please follow [README.md](https://github.com/Informatievlaanderen/VSDS-Onboarding-VMM/blob/main/iow/README.md) for step-by-step guide.
 
