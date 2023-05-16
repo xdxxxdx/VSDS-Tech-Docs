@@ -133,7 +133,7 @@ sample:by-page  rdf:type  tree:Node .
 <https://data.vmm.be/id/loc-00019-33> a <http://def.isotc211.org/iso19156/2011/SpatialSamplingFeature#SF_SpatialSamplingFeature> .
 ```
 
-- Please run ```curl -X POST http://localhost:8080/sample -H "Content-Type: application/ttl" -d '@sample.ttl' ``` to post the `sample.ttl` to the LDES Server.
+- Please run ```curl -X POST http://localhost:8080/sample -H "Content-Type: application/ttl" -d "@sample.ttl" ``` to post the `sample.ttl` to the LDES Server.
 
 - The data is added to the LDES Server and part of the LDES.
 - Browse to <http://localhost:8080/sample> to have a look.
