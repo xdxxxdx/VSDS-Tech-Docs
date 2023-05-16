@@ -31,6 +31,7 @@ services:
      container_name: quick_start_ldes-server
      image: ghcr.io/informatievlaanderen/ldes-server:20230314T0913
      environment:
+       - MANAGEMENT_TRACING_ENABLED=false
        - SIS_DATA=/tmp
        - SPRING_DATA_MONGODB_DATABASE=sample
        - LDES_COLLECTIONNAME=sample
