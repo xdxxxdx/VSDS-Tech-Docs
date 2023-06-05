@@ -302,9 +302,9 @@ curl -X 'POST' \
 ```note
 ***Please Note!***
 
-_The purpose of the quick start try-out is solely to create _[Pagination fragmentation](https://github.com/Informatievlaanderen/VSDS-LDESServer4J/tree/main/ldes-fragmentisers/ldes-fragmentisers-pagination)_ for the self-generated data type to _[LDES format](https://semiceu.github.io/LinkedDataEventStreams/)_. To support other fragments, data types, or other features, e.g., retention, caching, etc., please consult _[LDES Server Manual](https://github.com/Informatievlaanderen/VSDS-LDESServer4J)_ for the configurations._
+_The purpose of the quick start try-out is solely to create _[Pagination fragmentation](https://github.com/Informatievlaanderen/VSDS-LDESServer4J/tree/main/ldes-fragmentisers/ldes-fragmentisers-pagination)_ for the self-generated data type to _[LDES format](https://semiceu.github.io/LinkedDataEventStreams/)_. To support other fragments, data types, or other features, e.g., retention, caching, etc., please consult _[LDES Server Manual](https://github.com/Informatievlaanderen/VSDS-LDESServer4J)_ for the configurations._
 
-[Vlaamse Smart Data Space](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/vlaamse-smart-data-space)_ projects also provide methods for transforming data to *[LDES format](https://semiceu.github.io/LinkedDataEventStreams/)_, e.g. from _[NGSI-V2](https://vloca-kennishub.vlaanderen.be/NGSI-v2)* to *[NGSI-LD](https://en.wikipedia.org/wiki/NGSI-LD)_, from NGSI to _[OSLO](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/oslo)_ Model, from _[NGSI-V2](https://vloca-kennishub.vlaanderen.be/NGSI-v2)_ to _[LDES (LinkedDataEventStreams)](https://semiceu.github.io/LinkedDataEventStreams/).
+[Vlaamse Smart Data Space](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/vlaamse-smart-data-space)_ projects also provide methods for transforming data to *[LDES format](https://semiceu.github.io/LinkedDataEventStreams/)_, e.g. from _[NGSI-V2](https://vloca-kennishub.vlaanderen.be/NGSI-v2)* to *[NGSI-LD](https://en.wikipedia.org/wiki/NGSI-LD)_, from NGSI to _[OSLO](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/oslo)_ Model, from _[NGSI-V2](https://vloca-kennishub.vlaanderen.be/NGSI-v2)_ to _[LDES (LinkedDataEventStreams)](https://semiceu.github.io/LinkedDataEventStreams/).
 
 ```
 
@@ -319,13 +319,13 @@ In this short example below, we show you how the components of the VSDS can be u
 ### Before starting
 
 
-1.  [Docker](https://docker.com/) has been installed on your device.
+1.  [Docker](https://docker.com/) has been installed on your device.
 2.  Local Ports 8443 and 7200 are accessible.
 
 ### Start your LDES workbench
 
 
-1.  Create a local [docker-compose.yml](https://github.com/samuvack/ldes-grar/blob/main/docker-compose.yml) file with the following content, or you could use the current good-to-go [GetStarted GRAR project](https://github.com/samuvack/ldes-grar):
+1.  Create a local [docker-compose.yml](https://github.com/samuvack/ldes-grar/blob/main/docker-compose.yml) file with the following content, or you could use the current good-to-go [GetStarted GRAR project](https://github.com/samuvack/ldes-grar):
 
 ```yaml
 version: ‘3’
@@ -373,8 +373,8 @@ To begin, the command for launching GraphDb and Apache NiFi within a docker cont
 ```source-shell
 docker compose up --build
 ```
-Apache Nifi runs on port 8443:8443/tcp :[https://localhost:8443](https://localhost:8443/)\
-GraphDB runs on port 7200 :7200/tcp : [http://localhost:7200](http://localhost:7200/)
+Apache Nifi runs on port 8443:8443/tcp :[https://localhost:8443](https://localhost:8443/)\
+GraphDB runs on port 7200 :7200/tcp : [http://localhost:7200](http://localhost:7200/)
 
 A data flow can be built up by dragging in building blocks in the graphical user interface of Apache NiFi. This docker container contains all the components out the latest version of the LDES workbench (e.g., latest LDES Client, LDES server, etc.). Every data stream can be transformed into a Linked Data Event Stream with a conversion data flow.
 
@@ -415,7 +415,7 @@ https://data.vlaanderen.be/id/gebouweenheid/14539518/2022-06-27T16:23:32+02:00
 ### Consuming an LDES
 
 
-For this purpose, the three Linked Data Event streams are stored in a [GraphDB](https://graphdb.ontotext.com/) to facilitate efficient and effective data consumption. GraphDB supports complex semantic queries and inference, making discovering meaningful relationships between different data sources possible.
+For this purpose, the three Linked Data Event streams are stored in a [GraphDB](https://graphdb.ontotext.com/) to facilitate efficient and effective data consumption. GraphDB supports complex semantic queries and inference, making discovering meaningful relationships between different data sources possible.
 
 ![Afbeelding met grafiek Automatisch gegenereerde beschrijving](../images/LdesToGrapDB.PNG)
 
@@ -478,5 +478,4 @@ The RDF file should be as follow:
 ns2:functie <https://data.vlaanderen.be/id/conceptscheme/nietGekend> ;    ns1:lokaleIdentificator "14635685" ;
 ns1:naamruimte "https://data.vlaanderen.be/id/gebouweenheid" ;    ns1:versieIdentificator "2022-06-27T20:51:02+02:00" .
 ```
-
 

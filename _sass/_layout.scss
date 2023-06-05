@@ -15,16 +15,16 @@
 
   @extend .menu-sm;
 
-  .sidebar > :last-child {
+  .sidebar> :last-child {
     margin-bottom: 5em;
   }
 }
 
 .addons-wrap {
   @extend .menu-sm;
-  color:#666;
+  color: #666;
   background-color: #fff;
-  
+
 
 }
 
@@ -83,4 +83,39 @@
   .content-wrap {
     max-width: $width-xl - $theme-menu-width;
   }
+}
+
+.highlight .kd {
+
+  color: #008000;
+}
+
+.highlight .nn,
+.highlight .k {
+  color: #0000FF;
+  font-weight: normal;
+}
+
+.highlight .ne,
+.highlight .nf,
+.highlight .fm,
+.highlight .nl {
+  color: #19177C;
+  font-weight: normal;
+}
+
+.highlight .mf,
+.highlight .mh,
+.highlight .il,
+.highlight .mi,
+.highlight .mo,
+.highlight .m,
+.highlight .mb,
+.highlight .mx {
+  color: #d14;
+}
+
+.highlight .n {
+  color: #008000;
+  font-weight: normal;
 }
