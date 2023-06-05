@@ -33,6 +33,8 @@ To start a default LDES Server, a few basic steps are needed.
     springdoc:
         swagger-ui:
             path: /v1/swagger
+    ldes-server:
+        host-name: "http://localhost:8080"
     management:
         tracing:
             enabled: false
