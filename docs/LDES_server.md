@@ -390,6 +390,8 @@ mongock:
 springdoc:
   swagger-ui:
     path: /v1/swagger
+ldes-server:
+  host-name: "http://localhost:8080"
 management:
   tracing:
     enabled: false
