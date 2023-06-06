@@ -50,43 +50,43 @@ To start a default LDES Server, a few basic steps are needed.
     ```yaml
     version: '3.3'
     services:
-    ldes-server:
-        container_name: basic_ldes-server
-        image: ghcr.io/informatievlaanderen/ldes-server:20230602200451
-        environment:
-        - SPRING_CONFIG_LOCATION=/config/
-        volumes:
-        - ./ldes-server.yml:/config/application.yml:ro
-        ports:
-        - 8080:8080
-        networks:
-        - ldes
-        depends_on:
-        - ldes-mongodb
-    ldes-mongodb:
-        container_name: quick_start_ldes-mongodb
-        image: mongo:6.0.4
-        ports:
-        - 27017:27017
-        networks:
-        - ldes
-    ldio-workbench:
-        container_name: basic_ldes-replication
-        image: ldes/ldi-orchestrator:0.0.1-SNAPSHOT
-        environment:
-        - SPRING_CONFIG_NAME=application
-        - SPRING_CONFIG_LOCATION=/config/
-        volumes:
-        - ./ldio.yml:/config/application.yml:ro
-        ports:
-        - ${LDIO_WORKBENCH_PORT:-8081}:8080
-        networks:
-        - ldes 
-        profiles:
-        - delay-started
+	    ldes-server:
+		container_name: basic_ldes-server
+		image: ghcr.io/informatievlaanderen/ldes-server:20230602200451
+		environment:
+		- SPRING_CONFIG_LOCATION=/config/
+		volumes:
+		- ./ldes-server.yml:/config/application.yml:ro
+		ports:
+		- 8080:8080
+		networks:
+		- ldes
+		depends_on:
+		- ldes-mongodb
+	    ldes-mongodb:
+		container_name: quick_start_ldes-mongodb
+		image: mongo:6.0.4
+		ports:
+		- 27017:27017
+		networks:
+		- ldes
+	    ldio-workbench:
+		container_name: basic_ldes-replication
+		image: ldes/ldi-orchestrator:0.0.1-SNAPSHOT
+		environment:
+		- SPRING_CONFIG_NAME=application
+		- SPRING_CONFIG_LOCATION=/config/
+		volumes:
+		- ./ldio.yml:/config/application.yml:ro
+		ports:
+		- ${LDIO_WORKBENCH_PORT:-8081}:8080
+		networks:
+		- ldes 
+		profiles:
+		- delay-started
     networks:
-    ldes:
-        name: quick_start_network
+	    ldes:
+		name: quick_start_network
     ```
 
 -  Run `docker compose up` within the work directory of `.yml` file, to start the containers.
