@@ -282,19 +282,19 @@ curl -X 'POST' \
 - Create a `ldio.yml` file in the same directory as your `docker-compose.yml` with the following content:
 
     ```yaml
-    orchestrator:
-        pipelines:
-        - name: gipod-replicator
-            description: "HTTP polling, OSLO transformation, version creation & HTTP sending."
-            input:
-            name: be.vlaanderen.informatievlaanderen.ldes.ldi.client.LdioLdesClient
-            config:
-                url: https://private-api.gipod.vlaanderen.be/api/v1/ldes/mobility-hindrances
-            outputs:
-            - name: be.vlaanderen.informatievlaanderen.ldes.ldio.LdioHttpOut
-            config:
-                endpoint: http://host.docker.internal:8080/mobility-hindrances
-                content-type: application/n-quads
+	orchestrator:
+	  pipelines:
+	    - name: gipod-replicator
+	      description: "HTTP polling, OSLO transformation, version creation & HTTP sending."
+	      input:
+		name: be.vlaanderen.informatievlaanderen.ldes.ldi.client.LdioLdesClient
+		config:
+		  url: https://private-api.gipod.vlaanderen.be/api/v1/ldes/mobility-hindrances
+	      outputs:
+		- name: be.vlaanderen.informatievlaanderen.ldes.ldio.LdioHttpOut
+		  config:
+		    endpoint: http://host.docker.internal:8080/mobility-hindrances
+		    content-type: application/n-quads
     ```
 - Execute the following command to start up the LDIO `docker compose up ldio-workbench -d`
 
