@@ -274,12 +274,12 @@ curl -X 'POST' \
 - Run the following command to post the `observation.ttl` to the LDES Server.
 
     ```bash
-    curl -X POST http://localhost:8080/observation -H "Content-Type: application/ttl" -d "@observation.ttl" 
+    curl -X POST http://localhost:8080/observations -H "Content-Type: application/ttl" -d "@observation.ttl" 
     ``` 
 
 ### Replicating an LDES using the LDES Client
 
-- Create a `ldio.yaml` file in the same directory as your `docker-compose.yml` with the following content:
+- Create a `ldio.yml` file in the same directory as your `docker-compose.yml` with the following content:
 
     ```yaml
     orchestrator:
