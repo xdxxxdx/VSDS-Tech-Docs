@@ -337,7 +337,7 @@ The LDES server typically adds an LDES member to the "lowest" possible fragment,
 ![](content/geospatial_algorithm.drawio.png)
 
 
-#### Example → TODO: create more easy example (e.g. Addresses)
+<!-- #### Example → TODO: create more easy example (e.g. Addresses) -->
 
 
 ---
