@@ -17,16 +17,9 @@ The server can be configured to meet the organisation's specific needs. Function
 The LDES server is available as on open-source building block on [GitHub](https://github.com/Informatievlaanderen/VSDS-LDESServer4J)
 ```
 
-## Swagger UI
 
-The Swagger API can be used to facilitate the setup process of the LDES Server.\
-
-{% include swagger2.html %}
-
-```note
-Please refer to the following chapters for instructions on setting up the LDES Server during its startup process.
-```
-## Ingesting sources (HTTP in)
+## Setting up the LDES Server during startup process
+### Ingesting sources (HTTP in)
 
 The LDES server is able to receive data via HTTP ingestion. Specifically, the server expects a single object (member) to be sent as input via a POST request. If the dataset still contains state objects, each of these must first be converted to a version object before being ingested in the server. This essential step ensures the ingested objects comply with the [LDES definition](https://informatievlaanderen.github.io/VSDS-Tech-Docs/docs/Specification.html#what-is-a-linked-data-event-stream).
 
@@ -53,7 +46,7 @@ rest:
   max-age-immutable: { time in seconds that an immutable fragment should not be refreshed, default when omitted: 604800 }
 ```
 
-## SHACL
+### SHACL
 
 The LDES specification prescribes that each LDES must link to a SHACL shape, providing a machine-readable definition of the members in the collection. If a SHACL shape was provided on startup, the LDES server reads it before the ingestion process starts and the SHACL shape is used to validate the ingested members. Only valid members are ingested in the LDES server. When starting the server, it is possible to provide a SHACL shape via through an RDF file. At last, the SHACL shape is also published as part of the LDES on the Web.
 
@@ -65,7 +58,7 @@ The SHACL shape specifies the expected properties of an LDES members and the con
 
 For more information about the SHACL shape and its structure, go to [here](https://informatievlaanderen.github.io/VSDS-Tech-Docs/docs/Specification.html#shacl). More information on how to provide an RDF file, containing a SHACL shape, to the LDES server can be found [here](https://github.com/Informatievlaanderen/VSDS-LDESServer4J#example-serving-static-content).
 
-## Fragmentation
+### Fragmentation
 
 To reduce the volume of data that consumers need to replicate or to speed up certain queries, the LDES server can be configured to create several fragmentations. Fragmentations are similar to indexes in databases but then published on the Web. The RDF predicate on which the fragmentation must be applied is defined through configuration.
 
@@ -79,7 +72,7 @@ The fragmenting of a Linked Data Event Stream (LDES) is a crucial technique for 
 
 ---
 
-### Partitioning
+#### Partitioning
 
 When applying partitioning, the LDES server will create fragments based on the order of arrival of the LDES member, and is a linear fragmentation. This fragmentation is considered the most basic and default fragmentation because it stands for the exact reason the LDES specification was created: replication and synchronising with a dataset. The members arriving on the LDES server are added to the first page, while the latest members are always included on the latest page.
 
@@ -123,7 +116,7 @@ config:
 
 ---
 
-### Substring fragmentation
+#### Substring fragmentation
 
 [Substring fragmentation](https://github.com/Informatievlaanderen/VSDS-LDESServer4J/tree/main/ldes-fragmentisers/ldes-fragmentisers-substring) involves dividing the data stream into smaller pieces based on specific substrings, or patterns, within the data. 
 
@@ -185,7 +178,7 @@ Note that this is all lowercase.
 
 ---
 
-### Time-based fragmentation
+#### Time-based fragmentation
 [Time-based fragmentation](https://github.com/Informatievlaanderen/VSDS-LDESServer4J/tree/main/ldes-fragmentisers/ldes-fragmentisers-timebased) has not yet been implemented.
 
 <p align="center"><img src="/VSDS-Tech-Docs/images/temporal.png" width="60%" text-align="center"></p>
@@ -217,7 +210,7 @@ for a given property should be used to create the correct relations. This is not
 
 ---
 
-### Geospatial fragmentation
+#### Geospatial fragmentation
 
 Consider the scenario where the address registry is published as an LDES that using partitioning. In such a case, data consumers are required to replicate the entire linear set of fragments, despite only being interested in a smaller subset of the dataset. For instance, the city of Brussels may only require addresses within its geographical region and is not interested in other addresses. However, with the partitioned LDES, they would need to iterate through all the fragments and filter the LDES members (address version objects) on the client-side. By utilising geospatial fragmentation, the data can be divided into smaller pieces (tiles) based on geographical location. This facilitates filtering on the fragment level (tiles) and allows for processing and analysis of data within specific geospatial tiles.
 
@@ -344,12 +337,12 @@ The LDES server typically adds an LDES member to the "lowest" possible fragment,
 ![](content/geospatial_algorithm.drawio.png)
 
 
-#### Example → TODO: create more easy example (e.g. Addresses)
+<!-- #### Example → TODO: create more easy example (e.g. Addresses) -->
 
 
 ---
 
-## Retention policy
+### Retention policy
 
 
 A [retention policy](https://github.com/Informatievlaanderen/VSDS-LDESServer4J#example-retention) determines how long data will be kept and stored. Its purpose is to ensure the efficient use of storage resources by controlling data growth over time. Setting a retention policy per view to minimise storage fill-up is possible.
@@ -370,19 +363,19 @@ duration:  "PT5M"
 
 As an example, the time-based retention configuration example above is set up to ensure that data is automatically deleted after 5 minutes (PT5M).
 
-## Hosting the LDES stream SHACL shape
+### Hosting the LDES stream SHACL shape
 
 SHACL (Shapes Constraint Language) is a language used to validate RDF graphs against a set of conditions provided as shapes and other constructs in an RDF graph. The LDES Server facilitates hosting a SHACL shape describing the members in the LDES. Through configuration, it is possible to [reference an existing SHACL shape](https://github.com/Informatievlaanderen/VSDS-LDESServer4J#example-http-ingest-fetch-configuration) via an URL or to provide a [static file](https://github.com/Informatievlaanderen/VSDS-LDESServer4J#example-serving-static-content) with an RDF description of the SHACL shape.
 
-## Hosting DCAT metadata
+### Hosting DCAT metadata
 
 DCAT is a standardised RDF vocabulary to describe data catalogues on the Web, allowing easy interoperability between catalogues. Using a standard schema, DCAT enhances discoverability and facilitates federated search across multiple catalogues.
 
 The LDES server facilitates hosting DCAT metadata when publishing an LDES. Through configuration, as with the SHACL shape, it is possible to reference an existing DCAT via an URI or to provide a static file containing an RDF description of the DCAT.
 More information on configuring DCAT on the LDES Server can be found [here](https://github.com/Informatievlaanderen/VSDS-LDESServer4J#example-serving-dcat-metadata).
 
-
-## Setup of the LDES Server
+## Setting up the LDES Server using API
+### Setup of the LDES Server
 
 To start a default LDES Server, a few basic steps are needed.
 
@@ -390,15 +383,21 @@ To start a default LDES Server, a few basic steps are needed.
 
 ```yaml
 mongock:
-  migration-scan-package: VSDS
+    migration-scan-package: VSDS
 springdoc:
-  swagger-ui:
-    path: /v1/swagger
+    swagger-ui:
+        path: /v1/swagger
 ldes-server:
-  host-name: "http://localhost:8080"
+    host-name: "http://localhost:8080"
 management:
-  tracing:
-    enabled: false
+    tracing:
+        enabled: false
+spring:
+  data:
+    mongodb:
+        database: ldes
+        host: ldes-mongodb
+        port: 27017
 ```
 
 - Create a local `docker-compose.yml` file with the content below.
@@ -432,7 +431,7 @@ networks:
 
 -  Run `docker compose up` within the work directory of `docker-compose.yml` file to start the containers.
 
-### Setting up metadata for the server
+#### Setting up metadata for the server
 
 Setting up metadata for your LDES Server can be done by posting a RDF object defining a DCAT catalog to `/admin/api/v1/dcat`
 
@@ -471,7 +470,7 @@ Finally, to delete the catalog, a DELETE request can be performed at `/admin/api
 Further documentation can be found on the internal Swagger API available at `/v1/swagger`
 ```
 
-## Setting up a collection
+### Setting up a collection
 
 Setting up a collection on the LDES Server can be done by posting a RDF object defining a collection to `/admin/api/v1/eventstreams`
 
@@ -502,7 +501,7 @@ This collection can be deleted by performing a DELETE request on `/admin/api/v1/
 Further documentation can be found on the internal Swagger API available at `/v1/swagger`
 ```
 
-### Setting up metadata for collection
+#### Setting up metadata for collection
 
 To add metadata to an inserted collection, one can post a DCAT dataset on `/admin/api/v1/eventstreams/{collectionName}/dcat`
 
@@ -543,7 +542,7 @@ Similarly, a DELETE request can be performed on `/admin/api/v1/eventstreams/{col
 Further documentation can be found on the internal Swagger API available at `/v1/swagger`
 ```
 
-## Setting up a view
+### Setting up a view
 
 Setting up a view on the LDES Server can be done by performing a PUT operation with a RDF object defining a collection to `/admin/api/v1/eventstreams/{collectionName}/views`
 
@@ -571,7 +570,7 @@ Setting up a view on the LDES Server can be done by performing a PUT operation w
 Further documentation can be found on the internal Swagger API available at `/v1/swagger`
 ```
 
-### Setting up metadata for view 
+#### Setting up metadata for view 
 
 To add metadata to an inserted view, one can perform a PUT operation with a DCAT view description and dataservice on `/admin/api/v1/eventstreams/{collectionName}/views/{viewName}/dcat`
 
@@ -619,3 +618,4 @@ Similarly, a DELETE request can be performed on `/admin/api/v1/eventstreams/{col
 ```note
 Further documentation can be found on the internal Swagger API available at `/v1/swagger`
 ```
+{% include swagger2.html %}
