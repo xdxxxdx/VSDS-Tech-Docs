@@ -17,15 +17,8 @@ The server can be configured to meet the organisation's specific needs. Function
 The LDES server is available as on open-source building block on [GitHub](https://github.com/Informatievlaanderen/VSDS-LDESServer4J)
 ```
 
-## Swagger UI
 
-The Swagger API can be used to facilitate the setup process of the LDES Server.\
-
-{% include swagger2.html %}
-
-```note
-Please refer to the following chapters for instructions on setting up the LDES Server during its startup process.
-```
+# Setting up the LDES Server during startup process.
 ## Ingesting sources (HTTP in)
 
 The LDES server is able to receive data via HTTP ingestion. Specifically, the server expects a single object (member) to be sent as input via a POST request. If the dataset still contains state objects, each of these must first be converted to a version object before being ingested in the server. This essential step ensures the ingested objects comply with the [LDES definition](https://informatievlaanderen.github.io/VSDS-Tech-Docs/docs/Specification.html#what-is-a-linked-data-event-stream).
@@ -381,7 +374,7 @@ DCAT is a standardised RDF vocabulary to describe data catalogues on the Web, al
 The LDES server facilitates hosting DCAT metadata when publishing an LDES. Through configuration, as with the SHACL shape, it is possible to reference an existing DCAT via an URI or to provide a static file containing an RDF description of the DCAT.
 More information on configuring DCAT on the LDES Server can be found [here](https://github.com/Informatievlaanderen/VSDS-LDESServer4J#example-serving-dcat-metadata).
 
-
+# Setting up the LDES Server using API.
 ## Setup of the LDES Server
 
 To start a default LDES Server, a few basic steps are needed.
@@ -390,15 +383,21 @@ To start a default LDES Server, a few basic steps are needed.
 
 ```yaml
 mongock:
-  migration-scan-package: VSDS
+    migration-scan-package: VSDS
 springdoc:
-  swagger-ui:
-    path: /v1/swagger
+    swagger-ui:
+        path: /v1/swagger
 ldes-server:
-  host-name: "http://localhost:8080"
+    host-name: "http://localhost:8080"
 management:
-  tracing:
-    enabled: false
+    tracing:
+        enabled: false
+spring:
+  data:
+    mongodb:
+        database: ldes
+        host: ldes-mongodb
+        port: 27017
 ```
 
 - Create a local `docker-compose.yml` file with the content below.
@@ -619,3 +618,4 @@ Similarly, a DELETE request can be performed on `/admin/api/v1/eventstreams/{col
 ```note
 Further documentation can be found on the internal Swagger API available at `/v1/swagger`
 ```
+{% include swagger2.html %}
