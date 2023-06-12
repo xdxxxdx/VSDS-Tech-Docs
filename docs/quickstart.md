@@ -7,7 +7,7 @@ sort: 1
 
 ## LDES Server & LDES Client
 
-This example focuses on both publishing and consuming a [Linked Data Event Stream](https://semiceu.github.io/LinkedDataEventStreams/) (LDES). We start by explaining how to setup an LDES server and publish data as an LDES, followed by the setup of the LDES client to replicate an LDES. In this example, the data examples are described with [OSLO](https://data.vlaanderen.be/) (the Flemish Interoperability Program) ontologies. The [GetStarted_VSDS](https://github.com/xdxxxdx/GetStarted_VSDS) on GitHub shows how to publish data using a FIWARE Smart Data model.
+This example focuses on both publishing and consuming a [Linked Data Event Stream](https://semiceu.github.io/LinkedDataEventStreams/) (LDES). We start by explaining how to setup an LDES server and publish data as an LDES, followed by the setup of the LDES client to replicate an LDES. In this example, the data examples are described with [OSLO](https://data.vlaanderen.be/) (the Flemish Interoperability Program) ontologies.
 
 ```note
 
@@ -47,53 +47,54 @@ To start a default LDES Server, a few basic steps are needed.
     ```
 
 - Create a local `docker-compose.yml` file with the content below.
+
     ```yaml
     version: '3.3'
     services:
-	    ldes-server:
-		container_name: basic_ldes-server
-		image: ghcr.io/informatievlaanderen/ldes-server:20230602200451
-		environment:
-		- SPRING_CONFIG_LOCATION=/config/
-		volumes:
-		- ./ldes-server.yml:/config/application.yml:ro
-		ports:
-		- 8080:8080
-		networks:
-		- ldes
-		depends_on:
-		- ldes-mongodb
-	    ldes-mongodb:
-		container_name: quick_start_ldes-mongodb
-		image: mongo:6.0.4
-		ports:
-		- 27017:27017
-		networks:
-		- ldes
-	    ldio-workbench:
-		container_name: basic_ldes-replication
-		image: ldes/ldi-orchestrator:0.0.1-SNAPSHOT
-		environment:
-		- SPRING_CONFIG_NAME=application
-		- SPRING_CONFIG_LOCATION=/config/
-		volumes:
-		- ./ldio.yml:/config/application.yml:ro
-		ports:
-		- ${LDIO_WORKBENCH_PORT:-8081}:8080
-		networks:
-		- ldes 
-		profiles:
-		- delay-started
+        ldes-server:
+            container_name: basic_ldes-server
+            image: ldes/ldes-server:1.0.0-SNAPSHOT
+            environment:
+            - SPRING_CONFIG_LOCATION=/config/
+            volumes:
+            - ./ldes-server.yml:/config/application.yml:ro
+            ports:
+            - 8080:8080
+            networks:
+            - ldes
+            depends_on:
+            - ldes-mongodb
+        ldes-mongodb:
+            container_name: quick_start_ldes-mongodb
+            image: mongo:6.0.4
+            ports:
+            - 27017:27017
+            networks:
+            - ldes
+        ldio-workbench:
+            container_name: basic_ldes-replication
+            image: ldes/ldi-orchestrator:1.0.0-SNAPSHOT
+            environment:
+            - SPRING_CONFIG_NAME=application
+            - SPRING_CONFIG_LOCATION=/config/
+            volumes:
+            - ./ldio.yml:/config/application.yml:ro
+            ports:
+            - ${LDIO_WORKBENCH_PORT:-8081}:8080
+            networks:
+            - ldes 
+            profiles:
+            - delay-started
     networks:
-	    ldes:
-		name: quick_start_network
+        ldes:
+            name: quick_start_network
     ```
 
--  Run `docker compose up` within the work directory of `.yml` file, to start the containers.
--  The LDES Server is now available at port `8080` and accepts members via `HTTP POST` requests.
--  We will now configure the LDES Server. (note that this part can also be done with the Swagger endpoint (`/v1/swagger`), where more detailed documentation is available)
+- Run `docker compose up` within the work directory of `.yml` file, to start the containers.
+- The LDES Server is now available at port `8080` and accepts members via `HTTP POST` requests.
+- We will now configure the LDES Server. (note that this part can also be done with the Swagger endpoint (`/v1/swagger`), where more detailed documentation is available)
 
--  Let's set the DCAT metadata for the server by defining a title and a description:
+- Let's set the DCAT metadata for the server by defining a title and a description:
 
 ```bash
 curl -X 'POST' \
@@ -101,11 +102,11 @@ curl -X 'POST' \
   -H 'accept: text/plain' \
   -H 'Content-Type: text/turtle' \
   ---data-raw '  @prefix dct:   <http://purl.org/dc/terms/> .
-        @prefix dcat:  <http://www.w3.org/ns/dcat#> .
-
-        [] a dcat:Catalog ;
-        dct:title "My LDES'\''es"@en ;
-        dct:description "All LDES'\''es from publiser X"@en .
+                 @prefix dcat:  <http://www.w3.org/ns/dcat#> .
+ 
+                 [] a dcat:Catalog ;
+                    dct:title "My LDES'\''es"@en ;
+                    dct:description "All LDES'\''es from publiser X"@en .
         '
 ```
 
@@ -163,7 +164,7 @@ curl -X 'POST' \
     -H 'accept: */*' \
     -H 'Content-Type: text/turtle' \
     -d '  @prefix dcat: <http://www.w3.org/ns/dcat#> .
-            @prefix dct: <http://purl.org/dc/terms/> .
+          @prefix dct: <http://purl.org/dc/terms/> .
             [] a dcat:Dataset ;
                 dct:title "Mobility Hindrances Collection"@en ;
                 dct:title "Mobiliteitshindernissen collectie"@nl ;
@@ -198,23 +199,23 @@ curl -X 'POST' \
     -H 'accept: text/turtle' \
     -H 'Content-Type: text/turtle' \
     --data-raw '@prefix ldes: <https://w3id.org/ldes#> .
-    @prefix example: <http://example.org/> .
-    @prefix dcterms: <http://purl.org/dc/terms/> .
-    @prefix tree: <https://w3id.org/tree#>.
-    @prefix sh:   <http://www.w3.org/ns/shacl#> .
-    @prefix server: <http://localhost:8080/> .
-    @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+                @prefix example: <http://example.org/> .
+                @prefix dcterms: <http://purl.org/dc/terms/> .
+                @prefix tree: <https://w3id.org/tree#>.
+                @prefix sh:   <http://www.w3.org/ns/shacl#> .
+                @prefix server: <http://localhost:8080/> .
+                @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
 
-    server:observations a ldes:EventStream ;
-        ldes:timestampPath dcterms:created ;
-        ldes:versionOfPath dcterms:isVersionOf ;
-        example:memberType <https://data.vlaanderen.be/ns/mobiliteit#ObservationCollection> ;
-        example:hasDefaultView "true"^^xsd:boolean ;
-        tree:shape [
-            a sh:NodeShape ;
-        ] .
-    '
+                server:observations a ldes:EventStream ;
+                    ldes:timestampPath dcterms:created ;
+                    ldes:versionOfPath dcterms:isVersionOf ;
+                    example:memberType <https://data.vlaanderen.be/ns/mobiliteit#ObservationCollection> ;
+                    example:hasDefaultView "true"^^xsd:boolean ;
+                    tree:shape [
+                        a sh:NodeShape ;
+                    ] .
+                '
     ```
 
 ### Add data to the LDES Server
@@ -282,20 +283,21 @@ curl -X 'POST' \
 - Create a `ldio.yml` file in the same directory as your `docker-compose.yml` with the following content:
 
     ```yaml
-	orchestrator:
-	  pipelines:
-	    - name: gipod-replicator
-	      description: "HTTP polling, OSLO transformation, version creation & HTTP sending."
-	      input:
-		name: be.vlaanderen.informatievlaanderen.ldes.ldi.client.LdioLdesClient
-		config:
-		  url: https://private-api.gipod.vlaanderen.be/api/v1/ldes/mobility-hindrances
-	      outputs:
-		- name: be.vlaanderen.informatievlaanderen.ldes.ldio.LdioHttpOut
-		  config:
-		    endpoint: http://host.docker.internal:8080/mobility-hindrances
-		    content-type: application/n-quads
-    ```
+    orchestrator:
+        pipelines:
+            - name: gipod-replicator
+              description: "HTTP polling, OSLO transformation, version creation & HTTP sending."
+              input:
+                name: be.vlaanderen.informatievlaanderen.ldes.ldi.client.LdioLdesClient
+                config:
+                  url: https://private-api.gipod.vlaanderen.be/api/v1/ldes/mobility-hindrances
+              outputs:
+                - name: be.vlaanderen.informatievlaanderen.ldes.ldio.LdioHttpOut
+                  config:
+                    endpoint: http://host.docker.internal:8080/mobility-hindrances
+                    content-type: application/n-quads
+   ```     
+
 - Execute the following command to start up the LDIO `docker compose up ldio-workbench -d`
 
 - Validate your LDES server is being populated by going to `http://localhost:8080/mobility-hindrances/by-page?pageNumber=1` and `http://localhost:8080/mobility-hindrances/time-based`. These streams should fill up as the LDES Client send members to your server.
