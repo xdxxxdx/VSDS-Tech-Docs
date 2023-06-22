@@ -351,7 +351,7 @@ A [retention policy](https://github.com/Informatievlaanderen/VSDS-LDESServer4J#e
 
 Implementing a retention policy helps organisations maintain control over their data growth and ensure that storage resources are used optimally. The policy specifies the maximum duration that data should be kept. 
 
-## Time based retention policy
+#### Time based retention policy
 
 The time-based retention policy can be configured using the [ISO 8601](https://tc39.es/proposal-temporal/docs/duration.html) duration format. This time-based policy ensures that data is automatically deleted after a specified period, freeing up valuable storage space for new data.
 
@@ -373,7 +373,7 @@ duration:  "PT5M"
 As an example, the time-based retention configuration example above is set up to ensure that data is automatically deleted after 5 minutes (PT5M).
 
 
-## Point in time retention policy
+#### Point in time retention policy
 
 
 The point in time retention policy of the Linked Data Event Stream (LDES) only preserves the members created after a specific moment. In this way, only the members made after a given point in time retain.
@@ -393,7 +393,7 @@ The point in time retention policy of the Linked Data Event Stream (LDES) only p
   ] .
 ```
 
-## Version-based retention policy
+#### Version-based retention policy
 
 The version-based retention policy of the system ensures that only the x most recent members of each state object are retained. In this way, only the x most recent members of each state object retain.
 
