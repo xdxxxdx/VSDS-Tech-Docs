@@ -29,7 +29,7 @@ More information on the HTTP ingestion can be found [here](https://github.com/In
 
 Example HTTP Ingest-Fetch Configuration:
 
-
+ 
 ```yaml
 server.port: { http-port }
 ldes:
