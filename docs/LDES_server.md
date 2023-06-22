@@ -349,19 +349,69 @@ A [retention policy](https://github.com/Informatievlaanderen/VSDS-LDESServer4J#e
 
 <p align="center"><img src="/VSDS-Tech-Docs/images/retention_policy.png" width="60%" text-align="center"></p>
 
-Implementing a retention policy helps organisations maintain control over their data growth and ensure that storage resources are used optimally. The policy specifies the maximum duration that data should be kept. Currently, the only retention policy supported is time-based, which can be configured using the [ISO 8601](https://tc39.es/proposal-temporal/docs/duration.html) duration format. This time-based policy ensures that data is automatically deleted after a specified period, freeing up valuable storage space for new data.
+Implementing a retention policy helps organisations maintain control over their data growth and ensure that storage resources are used optimally. The policy specifies the maximum duration that data should be kept. 
 
-```yaml
-views:
-  - name: “firstView”
-    retentionPolicies:
-      - name: “timebased”
-        config:
-          duration: “PT5M”
+## Time based retention policy
+
+The time-based retention policy can be configured using the [ISO 8601](https://tc39.es/proposal-temporal/docs/duration.html) duration format. This time-based policy ensures that data is automatically deleted after a specified period, freeing up valuable storage space for new data.
+
+```turtle
+@prefix ldes: <https://w3id.org/ldes#> .
+@prefix tree: <https://w3id.org/tree#>.
+
+<view1> a tree:Node ;
+  tree:viewDescription [
+    a tree:ViewDescription ;
+    ldes:retentionPolicy [
+      a ldes:DurationAgoPolicy ;
+      tree:value "PT10M"^^<http://www.w3.org/2001/XMLSchema#duration> ;
+    ] ;
+  ] .
 ```
 duration:  "PT5M"
 
 As an example, the time-based retention configuration example above is set up to ensure that data is automatically deleted after 5 minutes (PT5M).
+
+
+## Point in time retention policy
+
+
+The point in time retention policy of the Linked Data Event Stream (LDES) only preserves the members created after a specific moment. In this way, only the members made after a given point in time retain.
+
+```turtle
+@prefix ldes: <https://w3id.org/ldes#> .
+@prefix tree: <https://w3id.org/tree#>.
+
+<view1> a tree:Node ;
+  tree:viewDescription [
+    a tree:ViewDescription ;
+    ldes:retentionPolicy [
+      a ldes:PointInTimePolicy ;
+      <https://w3id.org/ldes#pointInTime>
+        "2023-04-12T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+    ] ;
+  ] .
+```
+
+## Version-based retention policy
+
+The version-based retention policy of the system ensures that only the x most recent members of each state object are retained. In this way, only the x most recent members of each state object retain.
+
+```turtle
+@prefix ldes: <https://w3id.org/ldes#> .
+@prefix tree: <https://w3id.org/tree#>.
+
+<view1> a tree:Node ;
+  tree:viewDescription [
+    a tree:ViewDescription ;
+    ldes:retentionPolicy [
+      a ldes:LatestVersionSubset ;
+      tree:amount 2 ;
+    ] ;
+  ] .
+```
+
+
 
 ### Hosting the LDES stream SHACL shape
 
