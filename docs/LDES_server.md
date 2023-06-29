@@ -358,22 +358,22 @@ The time-based retention policy can be configured using the [ISO 8601](https://t
 ```turtle
 @prefix ldes: <https://w3id.org/ldes#> .
 @prefix tree: <https://w3id.org/tree#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix server: <http://localhost:8080/mobility-hindrances/> .
 
-<view1> a tree:Node ;
-  tree:viewDescription [
-    a tree:ViewDescription ;
+server:time-based-retention tree:viewDescription [
     ldes:retentionPolicy [
-      a ldes:DurationAgoPolicy ;
-      tree:value "PT10M"^^<http://www.w3.org/2001/XMLSchema#duration> ;
+        a ldes:DurationAgoPolicy  ;
+        tree:value "PT5M"^^xsd:duration ;
     ] ;
-  ] .
+] .
 ```
 duration:  "PT5M"
 
 As an example, the time-based retention configuration example above is set up to ensure that data is automatically deleted after 5 minutes (PT5M).
 
 
-#### Point in time retention policy
+#### Point-in-time retention policy
 
 
 The point in time retention policy of the Linked Data Event Stream (LDES) only preserves the members created after a specific moment. In this way, only the members made after a given point in time retain.
@@ -381,16 +381,15 @@ The point in time retention policy of the Linked Data Event Stream (LDES) only p
 ```turtle
 @prefix ldes: <https://w3id.org/ldes#> .
 @prefix tree: <https://w3id.org/tree#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix server: <http://localhost:8080/mobility-hindrances/> .
 
-<view1> a tree:Node ;
-  tree:viewDescription [
-    a tree:ViewDescription ;
+server:point-in-time-retention tree:viewDescription [
     ldes:retentionPolicy [
-      a ldes:PointInTimePolicy ;
-      <https://w3id.org/ldes#pointInTime>
-        "2023-04-12T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+        a ldes:PointInTimePolicy ;
+        ldes:pointInTime "2023-04-12T00:00:00"^^xsd:dateTime
     ] ;
-  ] .
+] .
 ```
 
 #### Version-based retention policy
@@ -400,15 +399,15 @@ The version-based retention policy of the system ensures that only the x most re
 ```turtle
 @prefix ldes: <https://w3id.org/ldes#> .
 @prefix tree: <https://w3id.org/tree#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix server: <http://localhost:8080/mobility-hindrances/> .
 
-<view1> a tree:Node ;
-  tree:viewDescription [
-    a tree:ViewDescription ;
+server:version-based-retention tree:viewDescription [
     ldes:retentionPolicy [
-      a ldes:LatestVersionSubset ;
-      tree:amount 2 ;
+        a ldes:LatestVersionSubset;
+        ldes:amount 2 ;
     ] ;
-  ] .
+] .
 ```
 
 
@@ -423,6 +422,36 @@ DCAT is a standardised RDF vocabulary to describe data catalogues on the Web, al
 
 The LDES server facilitates hosting DCAT metadata when publishing an LDES. Through configuration, as with the SHACL shape, it is possible to reference an existing DCAT via an URI or to provide a static file containing an RDF description of the DCAT.
 More information on configuring DCAT on the LDES Server can be found [here](https://github.com/Informatievlaanderen/VSDS-LDESServer4J#example-serving-dcat-metadata).
+
+#### Add DCAT configuration for the LDES server
+
+
+
+```turtle
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+
+[] a dcat:Catalog ;
+  dct:title "My LDES'es"@en ;
+  dct:description "All LDES'es from publiser X"@en .
+```
+
+#### Add DCAT metadata for a LDES
+
+
+
+```turtle
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+[] a dcat:Dataset ;
+   dc:title "My LDES"@en ;
+   dc:description "LDES for my data collection"@en .
+```
+
+
+
+
+#### 
 
 ## Setting up the LDES Server using API
 ### Setup of the LDES Server
