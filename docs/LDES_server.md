@@ -462,50 +462,51 @@ To start a default LDES Server, a few basic steps are needed.
 
 ```yaml
 mongock:
-    migration-scan-package: VSDS
+  migration-scan-package: VSDS
 springdoc:
-    swagger-ui:
-        path: /v1/swagger
+  swagger-ui:
+    path: /v1/swagger
 ldes-server:
-    host-name: "http://localhost:8080"
+  host-name: "http://localhost:8080"
 management:
-    tracing:
-        enabled: false
+  tracing:
+    enabled: false
 spring:
   data:
     mongodb:
-        database: ldes
-        host: ldes-mongodb
-        port: 27017
+      database: ldes
+      host: ldes-mongodb
+      port: 27017
+      auto-index-creation: true
 ```
 
 - Create a local `docker-compose.yml` file with the content below.
 ```yaml
 version: '3.3'
 services:
-   ldes-server:
+  ldes-server:
     container_name: basic_ldes-server
     image: ghcr.io/informatievlaanderen/ldes-server:20230602200451
     environment:
       - SPRING_CONFIG_LOCATION=/config/
     volumes:
       - ./ldes-server.yml:/config/application.yml:ro
-     ports:
-      - 8080:8080
-     networks:
-      - ldes
-     depends_on:
-      - ldes-mongodb
-   ldes-mongodb:
-     container_name: quick_start_ldes-mongodb
-     image: mongo:6.0.4
-     ports:
+    ports:
+        - 8080:8080
+    networks:
+        - ldes
+    depends_on:
+        - ldes-mongodb
+  ldes-mongodb:
+    container_name: quick_start_ldes-mongodb
+    image: mongo:6.0.4
+    ports:
       - 27017:27017
-     networks:
+    networks:
       - ldes
 networks:
-   ldes:
-      name: quick_start_network
+  ldes:
+    name: quick_start_network
 ```
 
 -  Run `docker compose up` within the work directory of `docker-compose.yml` file to start the containers.

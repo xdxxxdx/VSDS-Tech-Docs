@@ -47,9 +47,10 @@ To start a default LDES Server, a few basic steps are needed.
     spring:
         data:
             mongodb:
-            database: ldes
-            host: ldes-mongodb
-            port: 27017
+                database: ldes
+                host: ldes-mongodb
+                port: 27017
+                auto-index-creation: true
     ```
 
 - Create a local `docker-compose.yml` file with the content below.
